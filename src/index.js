@@ -1,10 +1,3 @@
-import './style.css'
+import App from './app'
 
-const text = () => {
-    const element = document.createElement('div')
-    element.innerHTML = 'todo'
-    element.classList.add('punanen')
-    return element
-}
-
-document.body.appendChild(text())
+App()

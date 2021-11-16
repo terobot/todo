@@ -1,3 +1,17 @@
-.punanen {
-    color: red;
+body {
+    background-color: #1F1B24;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.title {
+    color: #ffffff;
+    opacity: 1;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 4em;
 }
