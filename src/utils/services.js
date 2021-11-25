@@ -1,12 +1,6 @@
-import todo from './mockupDb'
-import {Product, Component, Container} from './schema'
-
-const createProduct = (props) => {
-    const title = props.title
-    const id = props.id
-    const components = props.components
-
-    return {title, id, components}
+const createProduct = (product) => {
+    const products = JSON.parse(localStorage.getItem('products')) || []
+    products.push(product)
+    localStorage.setItem('products', JSON.stringify(products))
 }
 
-export default {Product, Component, Container}
