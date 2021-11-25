@@ -16,7 +16,7 @@
   \*************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);\n// Imports\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, \"body {\\n    background-color: #1F1B24;\\n}\\n\\n.header {\\n    display: flex;\\n    justify-content: flex-start;\\n    align-items: center;\\n    gap: 0.5em;\\n}\\n\\n.title {\\n    color: #ffffff;\\n    opacity: 1;\\n    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;\\n    font-size: 4em;\\n}\", \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://todo/./src/style.css?./node_modules/css-loader/dist/cjs.js");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);\n// Imports\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, \"body {\\n    background-color: #1F1B24;\\n}\\n\\n.header {\\n    display: flex;\\n    justify-content: flex-start;\\n    align-items: center;\\n    gap: 0.5em;\\n}\\n\\n.logo {\\n    width: min(5vw, 3em);\\n}\\n\\n.title {\\n    color: #ffffff;\\n    opacity: 1;\\n    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;\\n    font-size: min(5vw, 2em);\\n}\\n\\n.sidePanel {\\n    width: min(20vw, 10em);\\n    height: 80vh;\\n    background-color: #3c3446;\\n    border-radius: min(2vw, 10px);\\n}\", \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://todo/./src/style.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -106,7 +106,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, style) {\
   \********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/header */ \"./src/components/header.js\");\n\n\n\nconst App = () => {\n    const pageContainer = document.createElement('div')\n    pageContainer.append((0,_components_header__WEBPACK_IMPORTED_MODULE_1__[\"default\"])())\n    document.body.appendChild(pageContainer)\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);\n\n\n//# sourceURL=webpack://todo/./src/app.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/header */ \"./src/components/header.js\");\n/* harmony import */ var _components_sidePanel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/sidePanel */ \"./src/components/sidePanel.js\");\n\n\n\n\nconst App = () => {\n    const pageContainer = document.createElement('div')\n    pageContainer.append((0,_components_header__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(), (0,_components_sidePanel__WEBPACK_IMPORTED_MODULE_2__[\"default\"])())\n    pageContainer.classList.add('pageContainer')\n    document.body.appendChild(pageContainer)\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);\n\n\n//# sourceURL=webpack://todo/./src/app.js?");
 
 /***/ }),
 
@@ -116,7 +116,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _logo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./logo */ \"./src/components/logo.js\");\n/* harmony import */ var _assets_logo_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../assets/logo.png */ \"./src/assets/logo.png\");\n\n\n\nconst Header = () => {\n    const header = document.createElement('header')\n    const title = document.createElement('div')\n    title.classList.add('title')\n    title.innerText = 'ToDo'\n    header.classList.add('header')\n    header.append((0,_logo__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(_assets_logo_png__WEBPACK_IMPORTED_MODULE_1__), title)\n    \n    return header\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Header);\n\n//# sourceURL=webpack://todo/./src/components/header.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _logo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./logo */ \"./src/components/logo.js\");\n/* harmony import */ var _assets_logo_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../assets/logo.png */ \"./src/assets/logo.png\");\n/* harmony import */ var _title__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./title */ \"./src/components/title.js\");\n\n\n\n\nconst Header = () => {\n    const header = document.createElement('header')\n    const logo = (0,_logo__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(_assets_logo_png__WEBPACK_IMPORTED_MODULE_1__, 'todo app', 'logo')\n    const title = (0,_title__WEBPACK_IMPORTED_MODULE_2__[\"default\"])('todo', 'title')\n    header.classList.add('header')\n    header.append(logo, title)\n    \n    return header\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Header);\n\n//# sourceURL=webpack://todo/./src/components/header.js?");
 
 /***/ }),
 
@@ -126,7 +126,27 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst Logo = (src, width, height) => {\n    const logo = document.createElement('img')\n    logo.setAttribute('src', src || 'src/assets/logo.png')\n    logo.setAttribute('width', width || '100')\n    logo.setAttribute('height', height || '100')\n    logo.setAttribute('alt', 'ToDo app')\n    logo.classList.add('logo')\n\n    return logo\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Logo);\n\n//# sourceURL=webpack://todo/./src/components/logo.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst Logo = (src, alt, elClass) => {\n    const logo = document.createElement('img')\n    logo.setAttribute('src', src)\n    logo.setAttribute('alt', alt)\n    logo.classList.add(elClass)\n\n    return logo\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Logo);\n\n//# sourceURL=webpack://todo/./src/components/logo.js?");
+
+/***/ }),
+
+/***/ "./src/components/sidePanel.js":
+/*!*************************************!*\
+  !*** ./src/components/sidePanel.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst SidePanel = () => {\n    const sidePanel = document.createElement('div')\n    sidePanel.classList.add('sidePanel')\n    \n    return sidePanel\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SidePanel);\n\n//# sourceURL=webpack://todo/./src/components/sidePanel.js?");
+
+/***/ }),
+
+/***/ "./src/components/title.js":
+/*!*********************************!*\
+  !*** ./src/components/title.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst Title = (text, elClass) => {\n    const title = document.createElement('div')\n    title.classList.add(elClass)\n    title.innerText = text\n    \n    return title\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Title);\n\n//# sourceURL=webpack://todo/./src/components/title.js?");
 
 /***/ }),
 
