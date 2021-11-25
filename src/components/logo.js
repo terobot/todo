@@ -1,10 +1,8 @@
-const Logo = (src, width, height) => {
+const Logo = (src, alt, elClass) => {
     const logo = document.createElement('img')
-    logo.setAttribute('src', src || 'src/assets/logo.png')
-    logo.setAttribute('width', width || '100')
-    logo.setAttribute('height', height || '100')
-    logo.setAttribute('alt', 'ToDo app')
-    logo.classList.add('logo')
+    logo.setAttribute('src', src)
+    logo.setAttribute('alt', alt)
+    logo.classList.add(elClass)
 
     return logo
 }

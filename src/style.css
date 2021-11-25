@@ -9,9 +9,20 @@ body {
     gap: 0.5em;
 }
 
+.logo {
+    width: min(5vw, 3em);
+}
+
 .title {
     color: #ffffff;
     opacity: 1;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 4em;
+    font-size: min(5vw, 2em);
+}
+
+.sidePanel {
+    width: min(20vw, 10em);
+    height: 80vh;
+    background-color: #3c3446;
+    border-radius: min(2vw, 10px);
 }

@@ -1,13 +1,13 @@
 import Logo from './logo'
-import logo from '../assets/logo.png'
+import logoSrc from '../assets/logo.png'
+import Title from './title'
 
 const Header = () => {
     const header = document.createElement('header')
-    const title = document.createElement('div')
-    title.classList.add('title')
-    title.innerText = 'ToDo'
+    const logo = Logo(logoSrc, 'todo app', 'logo')
+    const title = Title('todo', 'title')
     header.classList.add('header')
-    header.append(Logo(logo), title)
+    header.append(logo, title)
     
     return header
 }
