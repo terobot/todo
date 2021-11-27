@@ -116,17 +116,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _logo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./logo */ \"./src/components/logo.js\");\n/* harmony import */ var _assets_logo_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../assets/logo.png */ \"./src/assets/logo.png\");\n/* harmony import */ var _title__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./title */ \"./src/components/title.js\");\n\n\n\n\nconst Header = () => {\n    const header = document.createElement('header')\n    const logo = (0,_logo__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(_assets_logo_png__WEBPACK_IMPORTED_MODULE_1__, 'todo app', 'logo')\n    const title = (0,_title__WEBPACK_IMPORTED_MODULE_2__[\"default\"])('todo', 'title')\n    header.classList.add('header')\n    header.append(logo, title)\n    \n    return header\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Header);\n\n//# sourceURL=webpack://todo/./src/components/header.js?");
-
-/***/ }),
-
-/***/ "./src/components/logo.js":
-/*!********************************!*\
-  !*** ./src/components/logo.js ***!
-  \********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst Logo = (src, alt, elClass) => {\n    const logo = document.createElement('img')\n    logo.setAttribute('src', src)\n    logo.setAttribute('alt', alt)\n    logo.classList.add(elClass)\n\n    return logo\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Logo);\n\n//# sourceURL=webpack://todo/./src/components/logo.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _assets_logo_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/logo.png */ \"./src/assets/logo.png\");\n\n\nconst Logo = (src, alt, elClass) => {\n    const logo = document.createElement('img')\n    logo.setAttribute('src', src)\n    logo.setAttribute('alt', alt)\n    logo.classList.add(elClass)\n\n    return logo\n}\n\nconst Title = (text, elClass) => {\n    const title = document.createElement('div')\n    title.classList.add(elClass)\n    title.innerText = text\n    \n    return title\n}\n\nconst Header = () => {\n    const header = document.createElement('header')\n    const logo = Logo(_assets_logo_png__WEBPACK_IMPORTED_MODULE_0__, 'todo app', 'logo')\n    const title = Title('todo', 'title')\n    header.classList.add('header')\n    header.append(logo, title)\n    \n    return header\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Header);\n\n//# sourceURL=webpack://todo/./src/components/header.js?");
 
 /***/ }),
 
@@ -136,17 +126,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst SidePanel = () => {\n    const sidePanel = document.createElement('div')\n    sidePanel.classList.add('sidePanel')\n    \n    return sidePanel\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SidePanel);\n\n//# sourceURL=webpack://todo/./src/components/sidePanel.js?");
-
-/***/ }),
-
-/***/ "./src/components/title.js":
-/*!*********************************!*\
-  !*** ./src/components/title.js ***!
-  \*********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst Title = (text, elClass) => {\n    const title = document.createElement('div')\n    title.classList.add(elClass)\n    title.innerText = text\n    \n    return title\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Title);\n\n//# sourceURL=webpack://todo/./src/components/title.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _utils_services__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/services */ \"./src/utils/services.js\");\n\n\nconst ProjectEL = (title) => {\n    const projectEl = document.createElement('div')\n    projectEl.innerHTML = `${title}`\n\n    return projectEl\n}\n\nconst SidePanel = () => {\n    const sidePanel = document.createElement('div')\n    const projects = document.createElement('div') \n    sidePanel.classList.add('sidePanel')\n    projects.classList.add('projects')\n    _utils_services__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getProducts().map(x => projects.appendChild(ProjectEL(x.title)))\n    sidePanel.appendChild(projects)\n\n    return sidePanel\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SidePanel);\n\n//# sourceURL=webpack://todo/./src/components/sidePanel.js?");
 
 /***/ }),
 
@@ -157,6 +137,26 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app */ \"./src/app.js\");\n\n\n(0,_app__WEBPACK_IMPORTED_MODULE_0__[\"default\"])()\n\n//# sourceURL=webpack://todo/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/utils/schema.js":
+/*!*****************************!*\
+  !*** ./src/utils/schema.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst Product = (props) => {\n    const title = props.title\n    const id = props.id\n    const components = props.components\n\n    return {title, id, components}\n}\n\nconst Component = (props) => {\n    const title = props.title\n    const id = props.id\n    const inputSlot = props.inputSlot\n    const data = props.data\n\n    return {title, id, inputSlot, data}\n}\n\nconst Container = (props) => {\n    const title = props.title\n    const id = props.id\n    const type = props.type\n    const output = props.output\n\n    return {title, id, type, output}\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({Product, Component, Container});\n\n//# sourceURL=webpack://todo/./src/utils/schema.js?");
+
+/***/ }),
+
+/***/ "./src/utils/services.js":
+/*!*******************************!*\
+  !*** ./src/utils/services.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _schema__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./schema */ \"./src/utils/schema.js\");\n\n\n//init product for dev purposes\nconst products = []\nproducts.push(_schema__WEBPACK_IMPORTED_MODULE_0__[\"default\"].Product({title:'Game', id:'1', components:[]}))\nproducts.push(_schema__WEBPACK_IMPORTED_MODULE_0__[\"default\"].Product({title:'Webapp', id:'2', components:[]}))\nlocalStorage.setItem('products', JSON.stringify(products))\n\nconst getProducts = () => {\n    return JSON.parse(localStorage.getItem('products'))\n}\n\nconst createProduct = (product) => {\n    const products = JSON.parse(localStorage.getItem('products')) || []\n    products.push(product)\n    localStorage.setItem('products', JSON.stringify(products))\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({createProduct, getProducts});\n\n//# sourceURL=webpack://todo/./src/utils/services.js?");
 
 /***/ }),
 
