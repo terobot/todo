@@ -1,19 +1,21 @@
 import Service from '../utils/services'
 
-const ProjectEL = (title) => {
-    const projectEl = document.createElement('div')
-    projectEl.innerHTML = `${title}`
+const ProductEl = (title) => {
+    const productEl = document.createElement('div')
+    productEl.innerHTML = `${title}`
 
-    return projectEl
+    return productEl
 }
 
 const SidePanel = () => {
     const sidePanel = document.createElement('div')
-    const projects = document.createElement('div') 
+    const products = document.createElement('div')
+    const title = document.createElement('div')
     sidePanel.classList.add('sidePanel')
-    projects.classList.add('projects')
-    Service.getProducts().map(x => projects.appendChild(ProjectEL(x.title)))
-    sidePanel.appendChild(projects)
+    products.classList.add('products')
+    title.innerHTML = 'Products'
+    Service.getProducts().map(x => products.appendChild(ProductEl(x.title)))
+    sidePanel.append(title, products)
 
     return sidePanel
 }

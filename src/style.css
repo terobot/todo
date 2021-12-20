@@ -1,28 +1,47 @@
 body {
+    display: flex;
+    flex-direction: column;
     background-color: #1F1B24;
+    color: #ffffff;
+    height: 96vh;
+    row-gap: 1vh;
+    margin: 2vh;
+    padding: 0;
 }
 
 .header {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 0.5em;
+    column-gap: 0.5em;
+    height: 10vh;
 }
 
 .logo {
-    width: min(5vw, 3em);
+    height: 8vh;
 }
 
 .title {
-    color: #ffffff;
     opacity: 1;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: min(5vw, 2em);
+    font-size: 6vh;
+}
+
+.mainContainer {
+    display: flex;
+    gap: 1vw;
+    height: 86vh;
 }
 
 .sidePanel {
     width: min(20vw, 10em);
-    height: 80vh;
+    background-color: #3c3446;
+    border-radius: min(2vw, 10px);
+}
+
+.mainContent {
+    display: flex;
+    width: 100%;
     background-color: #3c3446;
     border-radius: min(2vw, 10px);
 }
