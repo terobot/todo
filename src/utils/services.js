@@ -30,7 +30,8 @@ const webAppContainerTypes = [
 ]
 
 products.push(Schema.Product({title:'Game', id:'1', components: gameComponents, containerTypes: gameContainerTypes}))
-products.push(Schema.Product({title:'Webapp', id:'2', components:webAppComponents, containerTypes: webAppContainerTypes}))
+products.push(Schema.Product({title:'Webapp', id:'2', components: webAppComponents, containerTypes: webAppContainerTypes}))
+products.push(Schema.Product({title: 'Empty', id:'3', components: [], containerTypes: []}))
 localStorage.setItem('products', JSON.stringify(products))
 console.log(products)
 
