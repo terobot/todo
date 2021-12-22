@@ -1,8 +1,15 @@
 import Service from '../utils/services'
+import Product from './productPanel'
 
 const ProductEl = (title) => {
     const productEl = document.createElement('div')
     productEl.innerHTML = `${title}`
+    productEl.addEventListener('click', () => {
+        const productPanel = document.getElementsByClassName('productPanel')[0]
+        productPanel.innerHTML = ''
+        productPanel.append(Product.ComponentList(title))
+    })
+
 
     return productEl
 }
