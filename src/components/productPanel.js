@@ -23,9 +23,30 @@ const ComponentEl = (product, component) => {
     return componentEl
 }
 
+const ComponentListHeaderItem = (item) => {
+    const itemEl = document.createElement('div')
+    itemEl.innerHTML = `${item}`
+    itemEl.classList.add('componentListHeaderItem')
+    itemEl.setAttribute('id', 'componentListHeaderItem'+item)
+
+    return itemEl
+}
+
+const ComponentListHeader = (product) => {
+    const containerTypes = Service.getProductByTitle(product).containerTypes
+    const header = document.createElement('div')
+    header.append(ComponentListHeaderItem(''))
+    containerTypes.map(x => header.append(ComponentListHeaderItem(x)))
+    header.classList.add('componentListHeader')
+    header.setAttribute('id', 'componentListHeader')
+
+    return header
+}
+
 const ComponentList = (product) => {
     const components = Service.getProductByTitle(product).components
     const componentList = document.createElement('div')
+    componentList.append(ComponentListHeader(product))
     componentList.classList.add('componentList')
     if (components) {
         components.map(x => componentList.appendChild(ComponentEl(product, x)))

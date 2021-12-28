@@ -45,3 +45,14 @@ body {
     background-color: #3c3446;
     border-radius: min(2vw, 10px);
 }
+
+.componentList {
+    width: 100%;
+}
+
+.componentListHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
