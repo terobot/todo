@@ -44,6 +44,7 @@ body {
     width: 100%;
     background-color: #3c3446;
     border-radius: min(2vw, 10px);
+    overflow: auto;
 }
 
 .componentList {
@@ -51,8 +52,27 @@ body {
 }
 
 .componentListHeader {
+    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    column-gap: 1vw;
+}
+
+.componentListHeaderItem {
+    width: 10em;
+}
+
+.component {
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    column-gap: 1vw;
+}
+
+.componentTitle {
+    width: 10em;
+}
+
+.containerType {
+    width: 10em;
 }

@@ -13,6 +13,7 @@ const ComponentEl = (product, component) => {
     const containerTypes = Service.getProductByTitle(product).containerTypes
     const componentTitle = document.createElement('div')
     componentTitle.innerHTML = `${component}`
+    componentTitle.classList.add('componentTitle')
     componentEl.append(componentTitle)
     if (containerTypes) {
         containerTypes.map(x => componentEl.appendChild(ContainerTypeEl(component, x)))

@@ -1,16 +1,16 @@
 import Service from '../utils/services'
 import Product from './productPanel'
 
-const ProductEl = (title) => {
+const ProductEl = (product) => {
     const productEl = document.createElement('div')
-    productEl.innerHTML = `${title}`
+    productEl.innerHTML = `${product}`
     productEl.addEventListener('click', () => {
         const productPanel = document.getElementById('productPanel')
         productPanel.innerHTML = ''
-        productPanel.append(Product.ComponentList(title))
+        productPanel.append(Product.ComponentList(product))
     })
     productEl.classList.add('productEl')
-    productEl.setAttribute('id', 'productEl'+title)
+    productEl.setAttribute('id', 'productEl'+product)
 
     return productEl
 }
@@ -56,6 +56,7 @@ const NewProductForm = () => {
     form.addEventListener('submit', e => {
         e.preventDefault()
         const products = document.getElementById('products')
+        const productPanel = document.getElementById('productPanel')
         const newProduct = {
             title: e.target.elements[0].value,
             id: Math.random(),
@@ -64,6 +65,8 @@ const NewProductForm = () => {
         }
         Service.createProduct(newProduct)
         products.append(ProductEl(e.target.elements[0].value))
+        productPanel.innerHTML = ''
+        productPanel.append(Product.ComponentList(newProduct.title))
         form.remove()
     })
 
