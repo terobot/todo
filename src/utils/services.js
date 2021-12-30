@@ -11,7 +11,7 @@ const gameComponents = [
 ]
 const gameContainerTypes = [
     'Character',
-    'Enviroment',
+    'Environment',
     'Enemy',
     'Object'
 ]
@@ -49,4 +49,19 @@ const createProduct = (product) => {
     localStorage.setItem('products', JSON.stringify(products))
 }
 
-export default {createProduct, getProducts, getProductByTitle}
+const addComponentToProduct = (productTitle, component) => {
+    const products = getProducts()
+    const product = products.find(x => x.title === productTitle)
+    product.components.push(component.title)
+    localStorage.setItem('products', JSON.stringify(products))
+}
+
+const addContainerTypeToProduct = (productTitle, containerType) => {
+    const products = getProducts()
+    const product = products.find(x => x.title === productTitle)
+    product.containerTypes.push(containerType.title)
+    localStorage.setItem('products', JSON.stringify(products))
+    console.log(localStorage.products)
+}
+
+export default {createProduct, getProducts, getProductByTitle, addComponentToProduct, addContainerTypeToProduct}

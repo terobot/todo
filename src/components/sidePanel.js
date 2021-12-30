@@ -42,6 +42,7 @@ const NewProductForm = () => {
     const titleField = document.createElement('input')
     const createButton = document.createElement('input')
     const cancelButton = document.createElement('div')
+    const sidePanel = document.getElementById('sidePanel')
     titleField.setAttribute('type', 'text')
     titleField.setAttribute('placeholder', 'Product name')
     createButton.setAttribute('type', 'submit')
@@ -50,6 +51,7 @@ const NewProductForm = () => {
     cancelButton.innerHTML = 'Cancel'
     cancelButton.addEventListener('click', () => {
         form.remove()
+        sidePanel.append(AddProductButton())
     })
     form.setAttribute('id', 'newProductForm')
     form.append(titleField, createButton, cancelButton)
@@ -68,6 +70,7 @@ const NewProductForm = () => {
         productPanel.innerHTML = ''
         productPanel.append(Product.ComponentList(newProduct.title))
         form.remove()
+        sidePanel.append(AddProductButton())
     })
 
     return form
@@ -83,8 +86,8 @@ const AddProductButton = () => {
     addProductButton.addEventListener('click', () => {
         const form = NewProductForm()
         const sidePanel = document.getElementById('sidePanel')
-        const existingForm = document.getElementById('newProductForm')
-        if (!existingForm) {sidePanel.append(form)}
+        sidePanel.append(form)
+        addProductButton.remove()
     })
 
     return addProductButton
