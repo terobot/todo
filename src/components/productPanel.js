@@ -1,9 +1,27 @@
 import Service from '../utils/services'
 
+const AddContainerButton = (component, containerType) => {
+    const addContainerButton = document.createElement('div')
+    const value = document.createElement('div')
+    addContainerButton.classList.add('button')
+    addContainerButton.setAttribute('id', 'addContainerButton')
+    value.innerHTML = '+'
+    addContainerButton.append(value)
+    addContainerButton.addEventListener('click', () => {
+        const form = NewContainerForm()
+        const containerTypeEl = document.getElementById(component+containerType)
+        containerTypeEl.append(form)
+        addContainerButton.remove()
+    })
+
+    return addContainerButton
+}
+
 const ContainerTypeEl = (component, containerType) => {
     const containerTypeEl = document.createElement('div')
     containerTypeEl.classList.add('containerType')
     containerTypeEl.setAttribute('id', component+containerType)
+    containerTypeEl.append(AddContainerButton(component, containerType))
 
     return containerTypeEl
 }
