@@ -1,4 +1,7 @@
 import Service from '../utils/services'
+import Button from './button'
+import Form from './form'
+import Handler from '../utils/handlers'
 
 const AddContainerButton = (component, containerType) => {
     const addContainerButton = document.createElement('div')
