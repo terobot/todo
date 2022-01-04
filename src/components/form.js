@@ -1,20 +1,18 @@
 import Button from './button'
 
-const Form = (id, display, submitHandler, submitArgs, cancelHandler, cancelArgs, ...inputs) => {
+const Form = (formId, cancelFormButtonId, cancelButtonName, submitButtonId, submitButtonName, display, ...inputs) => {
     const form = document.createElement('form')
-    const createButton = Button(
-        'Create',
-        'createProductButton',
+    const submitButton = Button(
+        submitButtonName,
+        submitButtonId,
         'submit',
         'initial'
     )
     const cancelButton = Button(
-        'Cancel',
-        'cancelProductCreationButton',
+        cancelButtonName,
+        cancelFormButtonId,
         'button',
-        'initial',
-        cancelHandler || null,
-        cancelArgs
+        'initial'
     )
     inputs.map(x => {
         const textInputEl = document.createElement('input')
@@ -23,9 +21,8 @@ const Form = (id, display, submitHandler, submitArgs, cancelHandler, cancelArgs,
         form.append(textInputEl)
     })
     form.style.display = display
-    form.setAttribute('id', id)
-    form.append(createButton, cancelButton)
-    form.addEventListener('submit', (e) => submitHandler(e, submitArgs) || null)
+    form.setAttribute('id', formId)
+    form.append(submitButton, cancelButton)
 
     return form
 }

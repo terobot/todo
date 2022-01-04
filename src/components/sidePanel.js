@@ -41,24 +41,37 @@ const ProductsMenu = () => {
 }
 
 const SidePanel = () => {
+    const formId = 'newProductForm'
+    const buttonId = 'addProductButton'
     const sidePanel = document.createElement('div')
     const newProductForm = Form(
-        'newProductForm',
+        formId,
+        'cancelProductButton',
+        'Cancel',
+        'createProductButton',
+        'Create',
         'none',
-        Handler.submitNewProductForm,
-        [ProductEl, Product.ComponentList, 'newProductForm', 'addProductButton'],
-        Handler.cancelFormInPlace,
-        ['addProductButton', 'newProductForm'],
         'Product name'
     )
     const addProductButton = Button(
         '+',
-        'addProductButton',
+        buttonId,
         'button',
-        'initial',
-        Handler.openFormInPlace,
-        ['addProductButton', 'newProductForm']
+        'initial'
     )
+    newProductForm.children.item(2).addEventListener('click', () => {
+        Handler.cancelFormInPlace(buttonId, formId)
+    })
+    newProductForm.addEventListener('submit', (e) => {
+        Handler.submitNewProductForm(
+            e,
+            ProductEl,
+            Product.ComponentList,
+            formId,
+            buttonId
+        )
+    })
+    addProductButton.addEventListener('click', () => Handler.openFormInPlace(buttonId, formId))
     sidePanel.classList.add('sidePanel')
     sidePanel.setAttribute('id', 'sidePanel')
     sidePanel.append(ProductsMenu(), addProductButton, newProductForm)
