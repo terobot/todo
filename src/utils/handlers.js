@@ -37,7 +37,7 @@ const submitNewProductForm = (e, ProductEl, ComponentList, formId, buttonId) => 
     button.style.display = 'initial'
 }
 
-const submitNewComponentForm = (e, ComponentEl, productTitle, componentList, formId, buttonId) => {
+const submitNewComponentForm = (e, ComponentListItemEl, productTitle, componentList, formId, buttonId) => {
     e.preventDefault()
     const form = document.getElementById(formId)
     const button = document.getElementById(buttonId)
@@ -49,7 +49,7 @@ const submitNewComponentForm = (e, ComponentEl, productTitle, componentList, for
     form.remove()
     button.remove()
     componentList.append(
-        ComponentEl(productTitle, e.target.elements[0].value),
+        ComponentListItemEl(productTitle, e.target.elements[0].value, 'component'),
         button,
         form
     )
@@ -58,9 +58,35 @@ const submitNewComponentForm = (e, ComponentEl, productTitle, componentList, for
     button.style.display = 'initial'
 }
 
+const submitNewContainerTypeForm = (e, ComponentListHeaderItem, header, componentListId, ComponentList, productTitle, formId, buttonId) => {
+    e.preventDefault()
+    const form = document.getElementById(formId)
+    const button = document.getElementById(buttonId)
+    const headerEl = document.getElementById(header)
+    const componentList = document.getElementById(componentListId)
+    const newContainerType = {
+        title: e.target.elements[0].value,
+        id: Math.random()
+    }
+    Service.addContainerTypeToProduct(productTitle, newContainerType)
+    form.remove()
+    button.remove()
+    headerEl.append(
+        ComponentListHeaderItem(e.target.elements[0].value),
+        button,
+        form
+    )
+    form.style.display = 'none'
+    Array.from(form.children).map(x => x.value = '')
+    button.style.display = 'initial'
+    componentList.innerHTML = ''
+    componentList.append(ComponentList(productTitle))
+}
+
 export default {
     openFormInPlace,
     submitNewProductForm,
     cancelFormInPlace,
-    submitNewComponentForm
+    submitNewComponentForm,
+    submitNewContainerTypeForm
 }

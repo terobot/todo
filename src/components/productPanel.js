@@ -29,20 +29,56 @@ const ContainerTypeEl = (component, containerType) => {
     return containerTypeEl
 }
 
-const ComponentEl = (productTitle, component) => {
-    const componentEl = document.createElement('div')
+const ComponentListItemEl = (productTitle, component, type) => {
+    const componentListItemEl = document.createElement('div')
     const containerTypes = Service.getProductByTitle(productTitle).containerTypes
     const componentTitle = document.createElement('div')
-    componentTitle.innerHTML = `${component}`
+    const formId = 'newContainerTypeForm'
+    const buttonId = 'addContainerTypeButton'
+    const newContainerTypeForm = Form(
+        formId,
+        'cancelContainerTypeButton',
+        'Cancel',
+        'createContainerTypeButton',
+        'Create',
+        'none',
+        'Container type name'
+    )
+    const addContainerTypeButton = Button(
+        '+',
+        buttonId,
+        'button',
+        'initial'
+    )
+    newContainerTypeForm.children.item(2).addEventListener('click', () => {
+        Handler.cancelFormInPlace(buttonId, formId)
+    })
+    newContainerTypeForm.addEventListener('submit', (e) => {
+        Handler.submitNewContainerTypeForm(
+            e,
+            ComponentListHeaderItem,
+            'componentListHeader',
+            'componentList',
+            ComponentList,
+            productTitle,
+            formId,
+            buttonId
+        )
+    })
+    addContainerTypeButton.addEventListener('click', () => Handler.openFormInPlace(buttonId, formId))
+    componentTitle.innerHTML = (type === 'component') ? `${component}` : ''
     componentTitle.classList.add('componentTitle')
-    componentEl.append(componentTitle)
+    componentListItemEl.append(componentTitle)
     if (containerTypes) {
-        containerTypes.map(x => componentEl.appendChild(ContainerTypeEl(component, x)))
+        containerTypes.map(x => componentListItemEl.appendChild(
+            (type === 'component') ? ContainerTypeEl(component, x) : ComponentListHeaderItem(x)
+        ))
     }
-    componentEl.classList.add('component')
-    componentEl.setAttribute('id', 'component'+component)
+    if (type === 'header') componentListItemEl.append(addContainerTypeButton, newContainerTypeForm)
+    componentListItemEl.classList.add((type === 'component') ? type : 'componentListHeader')
+    componentListItemEl.setAttribute('id', (type === 'component') ? type+component : 'componentListHeader')
 
-    return componentEl
+    return componentListItemEl
 }
 
 const ComponentListHeaderItem = (item) => {
@@ -54,67 +90,6 @@ const ComponentListHeaderItem = (item) => {
     return itemEl
 }
 
-const NewContainerTypeForm = (productTitle) => {
-    const form = document.createElement('form')
-    const titleField = document.createElement('input')
-    const createButton = document.createElement('input')
-    const cancelButton = document.createElement('div')
-    const header = document.getElementById('componentListHeader')
-    titleField.setAttribute('type', 'text')
-    titleField.setAttribute('placeholder', 'Container name')
-    createButton.setAttribute('type', 'submit')
-    createButton.setAttribute('value', 'Create')
-    cancelButton.classList.add('button')
-    cancelButton.innerHTML = 'Cancel'
-    cancelButton.addEventListener('click', () => {
-        form.remove()
-        header.append(AddContainerTypeButton(productTitle))
-    })
-    form.setAttribute('id', 'newContainerTypeForm')
-    form.append(titleField, createButton, cancelButton)
-    form.addEventListener('submit', e => {
-        e.preventDefault()
-        const newContainerType = {
-            title: e.target.elements[0].value,
-            id: Math.random()
-        }
-        Service.addContainerTypeToProduct(productTitle, newContainerType)
-        header.append(ComponentListHeaderItem(e.target.elements[0].value))
-        form.remove()
-        header.append(AddContainerTypeButton(productTitle))
-    })
-
-    return form
-}
-
-const AddContainerTypeButton = (productTitle) => {
-    const addContainerTypeButton = document.createElement('div')
-    const value = document.createElement('div')
-    addContainerTypeButton.classList.add('button')
-    addContainerTypeButton.setAttribute('id', 'addContainerTypeButton')
-    value.innerHTML = '+'
-    addContainerTypeButton.append(value)
-    addContainerTypeButton.addEventListener('click', () => {
-        const form = NewContainerTypeForm(productTitle)
-        const header = document.getElementById('componentListHeader')
-        header.append(form)
-        addContainerTypeButton.remove()
-    })
-
-    return addContainerTypeButton
-}
-
-const ComponentListHeader = (productTitle) => {
-    const containerTypes = Service.getProductByTitle(productTitle).containerTypes
-    const header = document.createElement('div')     
-    header.append(ComponentListHeaderItem(''))
-    containerTypes.map(x => header.append(ComponentListHeaderItem(x)))
-    header.classList.add('componentListHeader')
-    header.setAttribute('id', 'componentListHeader')
-    header.append(AddContainerTypeButton(productTitle))
-
-    return header
-}
 
 const ComponentList = (productTitle) => {
     const components = Service.getProductByTitle(productTitle).components
@@ -142,7 +117,7 @@ const ComponentList = (productTitle) => {
     newComponentForm.addEventListener('submit', (e) => {
         Handler.submitNewComponentForm(
             e,
-            ComponentEl,
+            ComponentListItemEl,
             productTitle,
             componentList,
             formId,
@@ -150,10 +125,10 @@ const ComponentList = (productTitle) => {
         )
     })
     addComponentButton.addEventListener('click', () => Handler.openFormInPlace(buttonId, formId))
-    componentList.append(ComponentListHeader(productTitle))
+    componentList.append(ComponentListItemEl(productTitle, 'header', 'header'))
     componentList.classList.add('componentList')
     if (components) {
-        components.map(x => componentList.appendChild(ComponentEl(productTitle, x)))
+        components.map(x => componentList.appendChild(ComponentListItemEl(productTitle, x, 'component')))
     }
     componentList.setAttribute('id', 'componentList')
     componentList.append(addComponentButton, newComponentForm)
