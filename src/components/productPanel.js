@@ -2,17 +2,13 @@ import Service from '../utils/services'
 import Button from './button'
 import Form from './form'
 import Handler from '../utils/handlers'
+import ContainerCard from './containerCard'
 
 const ContainerTypeEl = (component, containerType) => {
     const containerTypeEl = document.createElement('div')
     containerTypeEl.classList.add('containerType')
     containerTypeEl.setAttribute('id', component+containerType)
-    containerTypeEl.append(Button(
-        '+',
-        component+containerType,
-        'button',
-        'initial'
-    ))
+    containerTypeEl.append(ContainerCard(component+containerType+'card'))
 
     return containerTypeEl
 }

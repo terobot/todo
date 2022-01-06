@@ -53,6 +53,12 @@ body {
     display: none;
 }
 
+.componentList {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1vh;
+}
+
 .componentListHeader {
     display: flex;
     flex-direction: row;
@@ -81,8 +87,26 @@ body {
 
 .componentTitle {
     width: 5em;
+    overflow: auto;
+    text-overflow: ellipsis;
+}
+
+.componentTitle:hover {
+    text-overflow: clip;
+}
+
+.componentTitle::-webkit-scrollbar {
+    display: none;
 }
 
 .containerType {
     width: 5em;
+}
+
+.containerCard {
+    background: #494055;
+    height: 4em;
+    line-height: 1em;
+    border-radius: 0.5em;
+    cursor:pointer;
 }
