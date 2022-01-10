@@ -1,20 +1,28 @@
+:root {
+    --componentListCols: 0;
+    --componentListRows: 0;
+}
+
 body {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(5, 19.2%);
+    grid-template-rows: 10% 89%;
     background-color: #1F1B24;
     color: #ffffff;
     height: 96vh;
-    row-gap: 1vh;
+    gap: 1% 1%;
     margin: 2vh;
     padding: 0;
+    justify-content: stretch;
 }
 
 .header {
+    grid-column: 1 / 6;
+    grid-row: 1;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     column-gap: 0.5em;
-    height: 10vh;
 }
 
 .logo {
@@ -27,24 +35,20 @@ body {
     font-size: 6vh;
 }
 
-.mainContainer {
-    display: flex;
-    gap: 1vw;
-    height: 86vh;
-}
-
 .sidePanel {
-    width: min(20vw, 10em);
+    grid-column: 1 / 2;
+    grid-row: 2;
     background-color: #3c3446;
-    border-radius: min(2vw, 10px);
+    border-radius: 10px;
     padding: 0.5em;
 }
 
 .productPanel {
+    grid-column: 2 / 6;
+    grid-row: 2;
     display: flex;
-    width: 100%;
     background-color: #3c3446;
-    border-radius: min(2vw, 10px);
+    border-radius: 10px;
     overflow: auto;
     padding: 0.5em;
 }
@@ -54,15 +58,10 @@ body {
 }
 
 .componentList {
-    display: flex;
-    flex-direction: column;
-    row-gap: 1vh;
-}
-
-.componentListHeader {
-    display: flex;
-    flex-direction: row;
-    column-gap: 1vw;
+    display: grid;
+    grid-template-columns: repeat(var(--componentListCols), 5em);
+    grid-template-rows: 2em repeat(var(--componentListRows), 5em);
+    gap: 1% 1%;
 }
 
 .componentListHeaderItem {

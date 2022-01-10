@@ -2,9 +2,11 @@ const Product = (props) => {
     const title = props.title
     const id = props.id
     const components = props.components
+    const componentQty = props.components.length
     const containerTypes = props.containerTypes
+    const containerTypeQty = props.containerTypes.length
 
-    return {title, id, components, containerTypes}
+    return {title, id, components, containerTypes, componentQty, containerTypeQty}
 }
 
 const Component = (props) => {

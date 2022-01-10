@@ -4,10 +4,7 @@ import SidePanel from './components/sidePanel'
 import Product from './components/productPanel'
 
 const App = () => {
-    const mainContainer = document.createElement('div')
-    mainContainer.append(SidePanel(), Product.ProductPanel())
-    mainContainer.classList.add('mainContainer')
-    document.body.append(Header(), mainContainer)
+    document.body.append(Header(), SidePanel(), Product.ProductPanel())
 }
 
 export default App

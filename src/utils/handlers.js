@@ -58,12 +58,12 @@ const submitNewComponentForm = (e, ComponentListItemEl, productTitle, componentL
     button.style.display = 'initial'
 }
 
-const submitNewContainerTypeForm = (e, ComponentListHeaderItem, header, componentListId, ComponentList, productTitle, formId, buttonId) => {
+const submitNewContainerTypeForm = (e, ComponentListHeaderItem, header, productPanelId, ComponentList, productTitle, formId, buttonId) => {
     e.preventDefault()
     const form = document.getElementById(formId)
     const button = document.getElementById(buttonId)
     const headerEl = document.getElementById(header)
-    const componentList = document.getElementById(componentListId)
+    const productPanel = document.getElementById(productPanelId)
     const newContainerType = {
         title: e.target.elements[0].value,
         id: Math.random()
@@ -79,8 +79,8 @@ const submitNewContainerTypeForm = (e, ComponentListHeaderItem, header, componen
     form.style.display = 'none'
     Array.from(form.children).map(x => x.value = '')
     button.style.display = 'initial'
-    componentList.innerHTML = ''
-    componentList.append(ComponentList(productTitle))
+    productPanel.innerHTML = ''
+    productPanel.append(ComponentList(productTitle))
 }
 
 export default {

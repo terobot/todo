@@ -19,31 +19,12 @@ const ProductEl = (product) => {
 }
 
 const ProductsMenu = () => {
-    const products = document.createElement('div')
-    const productsMenu = document.createElement('div')
-    const productsMenuTitle = document.createElement('div')
-    products.classList.add('products')
-    productsMenu.classList.add('productsMenu')
-    productsMenuTitle.classList.add('productsMenuTitle')
-    products.setAttribute('id', 'products')
-    productsMenu.setAttribute('id', 'productsMenu')
-    productsMenuTitle.setAttribute('id', 'productsMenuTitle')
-    productsMenuTitle.innerHTML = 'Products'
-    Service.getProducts().map(x => products.appendChild(ProductEl(x.title)))
-    productsMenuTitle.addEventListener('click', () => {
-        const productPanel = document.getElementById('productPanel')
-        productPanel.innerHTML = ''
-        productPanel.append(Product.HomeView())
-    })
-    productsMenu.append(productsMenuTitle, products)
-
-    return productsMenu
-}
-
-const SidePanel = () => {
     const formId = 'newProductForm'
     const buttonId = 'addProductButton'
-    const sidePanel = document.createElement('div')
+    const products = Service.getProducts()
+    const productsEl = document.createElement('div')
+    const productsMenu = document.createElement('div')
+    const productsMenuTitle = document.createElement('div')
     const newProductForm = Form(
         formId,
         'cancelProductButton',
@@ -72,9 +53,29 @@ const SidePanel = () => {
         )
     })
     addProductButton.addEventListener('click', () => Handler.openFormInPlace(buttonId, formId))
+    productsEl.classList.add('products')
+    productsMenu.classList.add('productsMenu')
+    productsMenuTitle.classList.add('productsMenuTitle')
+    productsEl.setAttribute('id', 'products')
+    productsMenu.setAttribute('id', 'productsMenu')
+    productsMenuTitle.setAttribute('id', 'productsMenuTitle')
+    productsMenuTitle.innerHTML = 'Products'
+    if (products) products.map(x => productsEl.appendChild(ProductEl(x.title)))
+    productsMenuTitle.addEventListener('click', () => {
+        const productPanel = document.getElementById('productPanel')
+        productPanel.innerHTML = ''
+        productPanel.append(Product.HomeView())
+    })
+    productsMenu.append(productsMenuTitle, productsEl, addProductButton, newProductForm)
+
+    return productsMenu
+}
+
+const SidePanel = () => { 
+    const sidePanel = document.createElement('div')
     sidePanel.classList.add('sidePanel')
     sidePanel.setAttribute('id', 'sidePanel')
-    sidePanel.append(ProductsMenu(), addProductButton, newProductForm)
+    sidePanel.append(ProductsMenu())
 
     return sidePanel
 }
