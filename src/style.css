@@ -14,6 +14,7 @@ body {
     margin: 2vh;
     padding: 0;
     justify-content: stretch;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .header {
@@ -23,16 +24,20 @@ body {
     justify-content: flex-start;
     align-items: center;
     column-gap: 0.5em;
+    padding: 0.5em;
 }
 
 .logo {
     height: 8vh;
 }
 
-.title {
+.title#title {
     opacity: 1;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 6vh;
+}
+
+.title#productList {
+    font-size: 1.5em;
 }
 
 .sidePanel {
@@ -43,7 +48,7 @@ body {
     padding: 0.5em;
 }
 
-.productPanel {
+.mainPanel {
     grid-column: 2 / 6;
     grid-row: 2;
     display: flex;
@@ -53,35 +58,29 @@ body {
     padding: 0.5em;
 }
 
-.productPanel::-webkit-scrollbar {
+.mainPanel::-webkit-scrollbar {
     display: none;
 }
 
-.componentList {
+.componentsView {
     display: grid;
     grid-template-columns: repeat(var(--componentListCols), 5em);
-    grid-template-rows: 2em repeat(var(--componentListRows), 5em);
+    grid-template-rows: 2em repeat(var(--componentListRows), 5em) 2em;
     gap: 1% 1%;
 }
 
-.componentListHeaderItem {
+.containerTypeItem {
     width: 5em;
     overflow: auto;
     text-overflow: ellipsis;
 }
 
-.componentListHeaderItem:hover {
+.containerTypeItem:hover {
     text-overflow: clip;
 }
 
-.componentListHeaderItem::-webkit-scrollbar {
+.containerTypeItem::-webkit-scrollbar {
     display: none;
-}
-
-.component {
-    display: flex;
-    flex-direction: row;
-    column-gap: 1vw;
 }
 
 .componentTitle {
@@ -96,10 +95,6 @@ body {
 
 .componentTitle::-webkit-scrollbar {
     display: none;
-}
-
-.containerType {
-    width: 5em;
 }
 
 .containerCard {

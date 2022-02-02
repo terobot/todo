@@ -94,12 +94,12 @@ import ContainerCard from './containerCard'
 //         'none',
 //         'Component name'
 //     )
-//     const addComponentButton = Button(
-//         '+',
-//         buttonId,
-//         'button',
-//         'initial'
-//     )
+    // const addComponentButton = Button(
+    //     '+',
+    //     buttonId,
+    //     'button',
+    //     'initial'
+    // )
 //     newComponentForm.children.item(2).addEventListener('click', () => {
 //         Handler.cancelFormInPlace(buttonId, formId)
 //     })
@@ -127,11 +127,22 @@ import ContainerCard from './containerCard'
 //     return componentList
 // }
 
-const ComponentListHeaderItem = (item) => {
+const ContainerTypeItem = (item) => {
     const itemEl = document.createElement('div')
     itemEl.innerHTML = `${item}`
-    itemEl.classList.add('componentListHeaderItem')
-    itemEl.setAttribute('id', 'componentListHeaderItem'+item)
+    itemEl.classList.add('containerTypeItem')
+    itemEl.setAttribute('id', item)
+    itemEl.addEventListener('dblclick', () => {
+        const currentValue = itemEl.innerHTML
+        itemEl.contentEditable = 'true'
+        itemEl.focus()
+        itemEl.addEventListener('blur', () => {
+            itemEl.contentEditable = 'false'
+            if (itemEl.innerHTML !== currentValue) {
+                console.log('todo: updateContainerTypeTitle')
+            }
+        })
+    })
 
     return itemEl
 }
@@ -140,7 +151,7 @@ const ComponentTitleItem = (item) => {
     const itemEl = document.createElement('div')
     itemEl.innerHTML = `${item}`
     itemEl.classList.add('componentTitle')
-    itemEl.setAttribute('id', 'componentTitle'+item)
+    itemEl.setAttribute('id', item)
 
     return itemEl
 }
@@ -151,21 +162,42 @@ const ComponentList = (productTitle) => {
     const componentList = document.createElement('div')
     const root = document.documentElement;
     const containerTypes = Service.getProductByTitle(productTitle).containerTypes
-    const components = Service.getProductByTitle(productTitle).components
+    const components = Service.getProductByTitle(productTitle).components  
+    const addContainerTypeButton = Button(
+        '+',
+        'addContainerType',
+        'button',
+        'initial'
+    )
+    const addComponentButton = Button(
+        '+',
+        'addComponent',
+        'button',
+        'initial'
+    )
     componentList.classList.add('componentList')
     componentList.setAttribute('id', 'componentList')
-    root.style.setProperty('--componentListRows', componentQty+1);
+    root.style.setProperty('--componentListRows', componentQty);
     root.style.setProperty('--componentListCols', containerTypeQty+2);
     if (containerTypes) {
         let count = 1
         containerTypes.map(x => {
-            const el = ComponentListHeaderItem(x)
+            const el = ContainerTypeItem(x)
             el.style.setProperty('grid-column', count+1)
             el.style.setProperty('grid-row', 1)
             componentList.append(el)
             count++
         })
     }
+    addContainerTypeButton.addEventListener('click', () => {
+        const productPanel = document.getElementById('productPanel')
+        Service.addContainerTypeToProduct(productTitle, { title: 'New' })
+        productPanel.innerHTML = ''
+        productPanel.append(ComponentList(productTitle))
+    })
+    addContainerTypeButton.style.setProperty('grid-column', containerTypeQty+2)
+    addContainerTypeButton.style.setProperty('grid-row', 1)
+    componentList.append(addContainerTypeButton)
     if (components) {
         let count = 1
         components.map(x => {
@@ -176,6 +208,9 @@ const ComponentList = (productTitle) => {
             count++
         })
     }
+    addComponentButton.style.setProperty('grid-column', 1)
+    addComponentButton.style.setProperty('grid-row', componentQty+2)
+    componentList.append(addComponentButton)
 
     return componentList
 }

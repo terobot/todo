@@ -1,28 +1,15 @@
 import logoSrc from '../assets/logo.png'
-
-const Logo = (src, alt, id, elClass) => {
-    const logo = document.createElement('img')
-    logo.setAttribute('src', src)
-    logo.setAttribute('alt', alt)
-    logo.setAttribute('id', id)
-    logo.classList.add(elClass)
-
-    return logo
-}
-
-const Title = (text, id, elClass) => {
-    const title = document.createElement('div')
-    title.classList.add(elClass)
-    title.innerText = text
-    title.setAttribute('id', id)
-    
-    return title
-}
+import Handler from '../utils/handlers'
+import HomeView from './homeView'
+import Title from './title'
+import Logo from './logo'
 
 const Header = () => {
     const header = document.createElement('header')
     const logo = Logo(logoSrc, 'todo app', 'logo', 'logo')
     const title = Title('todo', 'title', 'title')
+    title.addEventListener('click', () => Handler.openView(HomeView()))
+    logo.addEventListener('click', () => Handler.openView(HomeView()))
     header.classList.add('header')
     header.append(logo, title)
     header.setAttribute('id', 'header')

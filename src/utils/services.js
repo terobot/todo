@@ -56,12 +56,17 @@ const addComponentToProduct = (productTitle, component) => {
     localStorage.setItem('products', JSON.stringify(products))
 }
 
+const updateComponentTitle = (productTitle, component) => {
+
+}
+
 const addContainerTypeToProduct = (productTitle, containerType) => {
     const products = getProducts()
     const product = products.find(x => x.title === productTitle)
     product.containerTypes.push(containerType.title)
+    product.containerTypeQty++
     localStorage.setItem('products', JSON.stringify(products))
     console.log(localStorage.products)
 }
 
-export default {createProduct, getProducts, getProductByTitle, addComponentToProduct, addContainerTypeToProduct}
+export default {createProduct, getProducts, getProductByTitle, addComponentToProduct, updateComponentTitle, addContainerTypeToProduct}

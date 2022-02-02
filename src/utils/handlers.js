@@ -1,40 +1,34 @@
 import Service from './services'
+import ProductItem from '../components/productItem'
+import ComponentsView from '../components/componentsView'
 
-const openFormInPlace = (openFormButtonId, formId) => {
-    const buttonEl = document.getElementById(openFormButtonId)
-    const formEl = document.getElementById(formId)
-    buttonEl.style.display = 'none'
-    formEl.style.display = 'initial'
-    formEl.children.item(0).focus()
+const openFormInPlace = (button, form) => {
+    button.style.display = 'none'
+    form.style.display = 'initial'
+    form.children.item(0).focus()
 }
 
-const cancelFormInPlace = (openFormButtonId, formId) => {
-    const buttonEl = document.getElementById(openFormButtonId)
-    const formEl = document.getElementById(formId)
-    buttonEl.style.display = 'initial'
-    formEl.style.display = 'none'
-    Array.from(formEl.children).map(x => x.value = '')
-} 
-
-const submitNewProductForm = (e, ProductEl, ComponentList, formId, buttonId) => {
-    e.preventDefault()
-    const products = document.getElementById('products')
-    const productPanel = document.getElementById('productPanel')
-    const form = document.getElementById(formId)
-    const button = document.getElementById(buttonId)
-    const newProduct = {
-        title: e.target.elements[0].value,
-        id: Math.random(),
-        components: [],
-        containerTypes: []
-    }
-    Service.createProduct(newProduct)
-    products.append(ProductEl(e.target.elements[0].value))
-    productPanel.innerHTML = ''
-    productPanel.append(ComponentList(e.target.elements[0].value))
+const cancelFormInPlace = (button, form) => {
+    button.style.display = 'initial'
     form.style.display = 'none'
     Array.from(form.children).map(x => x.value = '')
-    button.style.display = 'initial'
+} 
+
+const submitNewProductForm = (e, form, button, listId) => {
+    e.preventDefault()
+    const list = document.getElementsByClassName('list')[listId]
+    const newProduct = {
+        title: e.target.elements[0].value,
+        id: `${Service.getProducts().length+1}`,
+        components: [],
+        containerTypes: [],
+        componentQty: 0,
+        containerTypeQty: 0
+    }
+    Service.createProduct(newProduct)
+    cancelFormInPlace(button, form)
+    list.append(ProductItem(newProduct.title))
+    openProduct(newProduct.title)
 }
 
 const submitNewComponentForm = (e, ComponentListItemEl, productTitle, componentList, formId, buttonId) => {
@@ -83,10 +77,24 @@ const submitNewContainerTypeForm = (e, ComponentListHeaderItem, header, productP
     productPanel.append(ComponentList(productTitle))
 }
 
+const openProduct = (productTitle) => {
+    const mainPanel = document.getElementById('mainPanel')
+    mainPanel.innerHTML = ''
+    mainPanel.append(ComponentsView(productTitle))
+}
+
+const openView = (view) => {
+    const mainPanel = document.getElementById('mainPanel')
+    mainPanel.innerHTML = ''
+    mainPanel.append(view)
+}
+
 export default {
     openFormInPlace,
-    submitNewProductForm,
     cancelFormInPlace,
+    submitNewProductForm,
     submitNewComponentForm,
-    submitNewContainerTypeForm
+    submitNewContainerTypeForm,
+    openProduct,
+    openView
 }
