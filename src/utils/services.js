@@ -53,6 +53,7 @@ const addComponentToProduct = (productTitle, component) => {
     const products = getProducts()
     const product = products.find(x => x.title === productTitle)
     product.components.push(component.title)
+    product.componentQty++
     localStorage.setItem('products', JSON.stringify(products))
 }
 

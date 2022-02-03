@@ -31,50 +31,24 @@ const submitNewProductForm = (e, form, button, listId) => {
     openProduct(newProduct.title)
 }
 
-const submitNewComponentForm = (e, ComponentListItemEl, productTitle, componentList, formId, buttonId) => {
+const submitNewComponentForm = (e, productTitle) => {
     e.preventDefault()
-    const form = document.getElementById(formId)
-    const button = document.getElementById(buttonId)
     const newComponent = {
         title: e.target.elements[0].value,
-        id: Math.random()
+        id: `${Service.getProducts().componentQty+1}`
     }
     Service.addComponentToProduct(productTitle, newComponent)
-    form.remove()
-    button.remove()
-    componentList.append(
-        ComponentListItemEl(productTitle, e.target.elements[0].value, 'component'),
-        button,
-        form
-    )
-    form.style.display = 'none'
-    Array.from(form.children).map(x => x.value = '')
-    button.style.display = 'initial'
+    openProduct(productTitle)
 }
 
-const submitNewContainerTypeForm = (e, ComponentListHeaderItem, header, productPanelId, ComponentList, productTitle, formId, buttonId) => {
+const submitNewContainerTypeForm = (e, productTitle) => {
     e.preventDefault()
-    const form = document.getElementById(formId)
-    const button = document.getElementById(buttonId)
-    const headerEl = document.getElementById(header)
-    const productPanel = document.getElementById(productPanelId)
     const newContainerType = {
         title: e.target.elements[0].value,
-        id: Math.random()
+        id: `${Service.getProducts().containerTypeQty+1}`
     }
     Service.addContainerTypeToProduct(productTitle, newContainerType)
-    form.remove()
-    button.remove()
-    headerEl.append(
-        ComponentListHeaderItem(e.target.elements[0].value),
-        button,
-        form
-    )
-    form.style.display = 'none'
-    Array.from(form.children).map(x => x.value = '')
-    button.style.display = 'initial'
-    productPanel.innerHTML = ''
-    productPanel.append(ComponentList(productTitle))
+    openProduct(productTitle)
 }
 
 const openProduct = (productTitle) => {

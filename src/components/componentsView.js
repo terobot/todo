@@ -1,7 +1,9 @@
 import Button from './button'
+import Form from './form'
 import ContainerTypeItem from './containerTypeItem'
 import ComponentTitleItem from './componentTitleItem'
 import Service from '../utils/services'
+import Handler from '../utils/handlers'
 
 const ComponentsView = (productTitle) => {
     const componentsView = document.createElement('div')
@@ -10,18 +12,14 @@ const ComponentsView = (productTitle) => {
     const root = document.documentElement;
     const containerTypes = Service.getProductByTitle(productTitle).containerTypes
     const components = Service.getProductByTitle(productTitle).components  
-    const addContainerTypeButton = Button(
-        '+',
-        'addContainerType',
-        'button',
-        'initial'
-    )
-    const addComponentButton = Button(
-        '+',
-        'addComponent',
-        'button',
-        'initial'
-    )
+    const addContainerTypeButton = Button('+', 'addContainerType', 'button', 'initial')
+    const newContainerTypeForm = Form('newContainerType', 'none', 'Container type name')
+    const submitContainerTypeButton = Button('Submit', 'submitContainerType', 'submit', 'initial')
+    const cancelContainerTypeButton = Button('Cancel', 'cancelContainerType', 'button', 'initial')
+    const addComponentButton = Button('+', 'addComponent', 'button', 'initial')
+    const newComponentForm = Form('newComponent', 'none', 'Component name')
+    const submitComponentButton = Button('Submit', 'submitComponent', 'submit', 'initial')
+    const cancelComponentButton = Button('Cancel', 'cancelComponent', 'button', 'initial')
     componentsView.classList.add('componentsView')
     componentsView.setAttribute('id', 'componentsView')
     root.style.setProperty('--componentListRows', componentQty);
@@ -36,15 +34,15 @@ const ComponentsView = (productTitle) => {
             count++
         })
     }
-    addContainerTypeButton.addEventListener('click', () => {
-        const mainPanel = document.getElementById('mainPanel')
-        Service.addContainerTypeToProduct(productTitle, { title: 'New' })
-        mainPanel.innerHTML = ''
-        mainPanel.append(ComponentsView(productTitle))
-    })
     addContainerTypeButton.style.setProperty('grid-column', containerTypeQty+2)
     addContainerTypeButton.style.setProperty('grid-row', 1)
-    componentsView.append(addContainerTypeButton)
+    newContainerTypeForm.style.setProperty('grid-column', containerTypeQty+2)
+    newContainerTypeForm.style.setProperty('grid-row', 1)
+    cancelContainerTypeButton.addEventListener('click', () => Handler.cancelFormInPlace(addContainerTypeButton, newContainerTypeForm))
+    newContainerTypeForm.append(submitContainerTypeButton, cancelContainerTypeButton)
+    newContainerTypeForm.addEventListener('submit', (e) => Handler.submitNewContainerTypeForm(e, productTitle))
+    addContainerTypeButton.addEventListener('click', () => Handler.openFormInPlace(addContainerTypeButton, newContainerTypeForm))
+    componentsView.append(addContainerTypeButton, newContainerTypeForm)
     if (components) {
         let count = 1
         components.map(x => {
@@ -57,7 +55,13 @@ const ComponentsView = (productTitle) => {
     }
     addComponentButton.style.setProperty('grid-column', 1)
     addComponentButton.style.setProperty('grid-row', componentQty+2)
-    componentsView.append(addComponentButton)
+    newComponentForm.style.setProperty('grid-column', 1)
+    newComponentForm.style.setProperty('grid-row', componentQty+2)
+    cancelComponentButton.addEventListener('click', () => Handler.cancelFormInPlace(addComponentButton, newComponentForm))
+    newComponentForm.append(submitComponentButton, cancelComponentButton)
+    newComponentForm.addEventListener('submit', (e) => Handler.submitNewComponentForm(e, productTitle))
+    addComponentButton.addEventListener('click', () => Handler.openFormInPlace(addComponentButton, newComponentForm))
+    componentsView.append(addComponentButton, newComponentForm)
 
     return componentsView
 }
