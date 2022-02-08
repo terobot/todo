@@ -18,6 +18,13 @@ const Component = (props) => {
     return {title, id, containers, data}
 }
 
+const ContainerType = (props) => {
+    const title = props.title || ''
+    const id = props.id || ''
+
+    return {title, id}
+}
+
 const Container = (props) => {
     const title = props.title
     const id = props.id
@@ -29,4 +36,4 @@ const Container = (props) => {
     return {title, id, type, work, state, output}
 }
 
-export default {Product, Component, Container}
+export default {Product, Component, ContainerType, Container}

@@ -36,14 +36,14 @@ const submitNewComponentForm = (e, productId) => {
     openProduct(productId)
 }
 
-const submitNewContainerTypeForm = (e, productTitle) => {
+const submitNewContainerTypeForm = (e, productId) => {
     e.preventDefault()
-    const newContainerType = {
-        title: e.target.elements[0].value,
-        id: `${Service.getProducts().containerTypeQty+1}`
-    }
-    Service.addContainerTypeToProduct(productTitle, newContainerType)
-    openProduct(productTitle)
+    const product = Service.getProductById(productId)
+    const newContainerType = Service.createContainerType(e.target.elements[0].value)
+    product.containerTypes.push(newContainerType)
+    product.containerTypeQty++
+    Service.updateProduct(productId, product)
+    openProduct(productId)
 }
 
 const openProduct = (productId) => {

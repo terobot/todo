@@ -28,7 +28,7 @@ const ComponentsView = (productId) => {
     if (containerTypes) {
         let count = 1
         containerTypes.map(x => {
-            const el = ContainerTypeItem(x)
+            const el = ContainerTypeItem(x.title)
             el.style.setProperty('grid-column', count+1)
             el.style.setProperty('grid-row', 1)
             componentsView.append(el)
@@ -41,7 +41,7 @@ const ComponentsView = (productId) => {
     newContainerTypeForm.style.setProperty('grid-row', 1)
     cancelContainerTypeButton.addEventListener('click', () => Handler.cancelFormInPlace(addContainerTypeButton, newContainerTypeForm))
     newContainerTypeForm.append(submitContainerTypeButton, cancelContainerTypeButton)
-    newContainerTypeForm.addEventListener('submit', (e) => Handler.submitNewContainerTypeForm(e, productTitle))
+    newContainerTypeForm.addEventListener('submit', (e) => Handler.submitNewContainerTypeForm(e, productId))
     addContainerTypeButton.addEventListener('click', () => Handler.openFormInPlace(addContainerTypeButton, newContainerTypeForm))
     componentsView.append(addContainerTypeButton, newContainerTypeForm)
     if (components) {
