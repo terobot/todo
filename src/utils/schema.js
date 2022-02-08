@@ -1,19 +1,19 @@
 const Product = (props) => {
-    const title = props.title
-    const id = props.id
-    const components = props.components
-    const componentQty = props.components.length
-    const containerTypes = props.containerTypes
-    const containerTypeQty = props.containerTypes.length
+    const title = props.title || ''
+    const id = props.id || ''
+    const components = props.components || []
+    const componentQty = components.length
+    const containerTypes = props.containerTypes || []
+    const containerTypeQty = containerTypes.length
 
     return {title, id, components, containerTypes, componentQty, containerTypeQty}
 }
 
 const Component = (props) => {
-    const title = props.title
-    const id = props.id
-    const containers = props.containers
-    const data = props.data
+    const title = props.title || ''
+    const id = props.id || ''
+    const containers = props.containers || []
+    const data = props.data || []
 
     return {title, id, containers, data}
 }

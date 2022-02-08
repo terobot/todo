@@ -5,13 +5,14 @@ import ComponentTitleItem from './componentTitleItem'
 import Service from '../utils/services'
 import Handler from '../utils/handlers'
 
-const ComponentsView = (productTitle) => {
+const ComponentsView = (productId) => {
     const componentsView = document.createElement('div')
-    const componentQty = Service.getProductByTitle(productTitle).componentQty
-    const containerTypeQty = Service.getProductByTitle(productTitle).containerTypeQty
+    const product = Service.getProductById(productId)
+    const components = product.components 
+    const componentQty = product.componentQty
+    const containerTypes = product.containerTypes
+    const containerTypeQty = product.containerTypeQty
     const root = document.documentElement;
-    const containerTypes = Service.getProductByTitle(productTitle).containerTypes
-    const components = Service.getProductByTitle(productTitle).components  
     const addContainerTypeButton = Button('+', 'addContainerType', 'button', 'initial')
     const newContainerTypeForm = Form('newContainerType', 'none', 'Container type name')
     const submitContainerTypeButton = Button('Submit', 'submitContainerType', 'submit', 'initial')
@@ -46,7 +47,7 @@ const ComponentsView = (productTitle) => {
     if (components) {
         let count = 1
         components.map(x => {
-            const el = ComponentTitleItem(x)
+            const el = ComponentTitleItem(x.title)
             el.style.setProperty('grid-column', 1)
             el.style.setProperty('grid-row', count+1)
             componentsView.append(el)
@@ -59,9 +60,10 @@ const ComponentsView = (productTitle) => {
     newComponentForm.style.setProperty('grid-row', componentQty+2)
     cancelComponentButton.addEventListener('click', () => Handler.cancelFormInPlace(addComponentButton, newComponentForm))
     newComponentForm.append(submitComponentButton, cancelComponentButton)
-    newComponentForm.addEventListener('submit', (e) => Handler.submitNewComponentForm(e, productTitle))
+    newComponentForm.addEventListener('submit', (e) => Handler.submitNewComponentForm(e, productId))
     addComponentButton.addEventListener('click', () => Handler.openFormInPlace(addComponentButton, newComponentForm))
     componentsView.append(addComponentButton, newComponentForm)
+    Handler.fillGridWithAddContainerButtons(componentsView, 2, 2, components, containerTypes)
 
     return componentsView
 }
