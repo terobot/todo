@@ -67,7 +67,6 @@ const fillGridWithAddContainerButtons = (grid, startRow, startCol, rows, cols) =
             item.style.setProperty('grid-column', yCount)
             item.style.setProperty('grid-row', xCount)
             item.addEventListener('click', (e) => {
-                console.log(e.target.id.slice(12).split('.'))
                 const card = ContainerCard('container' + e.target.id.slice(12))
                 const nums = e.target.id.slice(12).split('.')
                 card.style.setProperty('grid-column', nums[1])

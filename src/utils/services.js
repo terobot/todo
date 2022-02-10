@@ -67,7 +67,6 @@ const createProduct = (productTitle) => {
 const updateProduct = (productId, updatedProduct) => {
     const products = getProducts()
     const updatedProducts = products.map(x => x.id === productId ? x = updatedProduct : x)
-    console.log(updatedProducts)
     localStorage.setItem('products', JSON.stringify(updatedProducts))
 }
 
@@ -99,23 +98,6 @@ const createContainerType = (containerTypeTitle) => {
     return newContainerType
 }
 
-const addContainerTypeToProduct = (productTitle, containerType) => {
-    const products = getProducts()
-    const product = products.find(x => x.title === productTitle)
-    product.containerTypes.push(containerType.title)
-    product.containerTypeQty++
-    localStorage.setItem('products', JSON.stringify(products))
-    console.log(localStorage.products)
-}
-
-const getComponentByTitleAndId = () => {
-
-}
-
-const addContainerToComponent = (productTitle, componentTitle, container) => {
-    
-}
-
 export default {
     getProducts,
     getProductById,
@@ -124,7 +106,5 @@ export default {
     getComponents,
     createComponent,
     getContainerTypes,
-    createContainerType,
-    addContainerTypeToProduct,
-    addContainerToComponent
+    createContainerType
 }
