@@ -14,7 +14,7 @@ const cancelFormInPlace = (button, form) => {
     button.style.display = 'initial'
     form.style.display = 'none'
     Array.from(form.children).map(x => x.value = '')
-} 
+}
 
 const submitNewProductForm = (e, form, button, listId) => {
     e.preventDefault()
@@ -46,16 +46,14 @@ const submitNewContainerTypeForm = (e, productId) => {
     openProduct(productId)
 }
 
-const openProduct = (productId) => {
-    const mainPanel = document.getElementById('mainPanel')
-    mainPanel.innerHTML = ''
-    mainPanel.append(ComponentsView(productId))
-}
-
 const openView = (view) => {
     const mainPanel = document.getElementById('mainPanel')
     mainPanel.innerHTML = ''
     mainPanel.append(view)
+}
+
+const openProduct = (productId) => {
+    openView(ComponentsView(productId))
 }
 
 const fillGridWithAddContainerButtons = (grid, startRow, startCol, rows, cols) => {
@@ -87,7 +85,7 @@ export default {
     submitNewProductForm,
     submitNewComponentForm,
     submitNewContainerTypeForm,
-    openProduct,
     openView,
+    openProduct,
     fillGridWithAddContainerButtons
 }

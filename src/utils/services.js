@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 const products = []
 const components = []
 const containerTypes = []
+const containers = []
 const gameComponents = [
     Schema.Component({title:'Level1', id: uuidv4()}),
     Schema.Component({title:'Level2', id: uuidv4()}),
@@ -32,19 +33,22 @@ const webAppContainerTypes = [
     Schema.ContainerType({title:'Tests', id: uuidv4()})
 ]
 
+containers.push(Schema.Container({title:'Character', id: uuidv4(), components: gameComponents, containerTypes: [gameContainerTypes[0]]}))
 gameComponents.map(x => components.push(x))
 gameContainerTypes.map(x => containerTypes.push(x))
 webAppComponents.map(x => components.push(x))
 webAppContainerTypes.map(x => containerTypes.push(x))
-products.push(Schema.Product({title: 'Game', id: uuidv4(), components: gameComponents, containerTypes: gameContainerTypes}))
-products.push(Schema.Product({title: 'Webapp', id: uuidv4(), components: webAppComponents, containerTypes: webAppContainerTypes}))
-products.push(Schema.Product({title: 'Empty', id: uuidv4(), components: [], containerTypes: []}))
+products.push(Schema.Product({title: 'Game', id: uuidv4(), components: gameComponents, containerTypes: gameContainerTypes, containers: containers}))
+products.push(Schema.Product({title: 'Webapp', id: uuidv4(), components: webAppComponents, containerTypes: webAppContainerTypes, containers: []}))
+products.push(Schema.Product({title: 'Empty', id: uuidv4(), components: [], containerTypes: [], containers: []}))
 localStorage.setItem('products', JSON.stringify(products))
 localStorage.setItem('components', JSON.stringify(components))
 localStorage.setItem('containerTypes', JSON.stringify(containerTypes))
+localStorage.setItem('containers', JSON.stringify(containers))
 console.log(products)
 console.log(components)
 console.log(containerTypes)
+console.log(containers)
 
 const getProducts = () => {
     return JSON.parse(localStorage.getItem('products')) || []
@@ -98,6 +102,20 @@ const createContainerType = (containerTypeTitle) => {
     return newContainerType
 }
 
+const getContainers = () => {
+    return JSON.parse(localStorage.getItem('containers')) || []
+}
+
+const createContainer = (containerTitle) => {
+    const containers = getContainers()
+    const containerId = uuidv4()
+    const newContainer = Schema.Container({title: containerTitle, id: containerId})
+    containers.push(newContainer)
+    localStorage.setItem('containers', JSON.stringify(containers))
+
+    return newContainer
+}
+
 export default {
     getProducts,
     getProductById,
@@ -106,5 +124,7 @@ export default {
     getComponents,
     createComponent,
     getContainerTypes,
-    createContainerType
+    createContainerType,
+    getContainers,
+    createContainer
 }
