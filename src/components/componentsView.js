@@ -26,7 +26,7 @@ const ComponentsView = (productId) => {
     const cancelComponentButton = Button('Cancel', 'cancelComponent', 'button', 'initial')
     componentsView.classList.add('componentsView')
     componentsView.setAttribute('id', 'componentsView')
-    root.style.setProperty('--componentListRows', componentQty);
+    root.style.setProperty('--componentListRows', componentQty+2);
     root.style.setProperty('--componentListCols', containerTypeQty+2);
     if (containerTypes) {
         let count = 1
@@ -70,15 +70,23 @@ const ComponentsView = (productId) => {
     newComponentForm.addEventListener('submit', (e) => Handler.submitNewComponentForm(e, productId))
     addComponentButton.addEventListener('click', () => Handler.openFormInPlace(addComponentButton, newComponentForm))
     componentsView.append(addComponentButton, newComponentForm)
-    if (containers) {
-        grid.nums = []
-        grid.containerTypes.map(containerType => {
-            grid.components.map(component => {
-                grid.nums.push({row:component.row, col: containerType.col, componentId: component.id, containerTypeId: containerType.id})
-            })
+    grid.tags = []
+    grid.containerTypes.map(containerType => {
+        grid.components.map(component => {
+            grid.tags.push({row: component.row, col: containerType.col, componentId: component.id, containerTypeId: containerType.id})
         })
+    })
+    grid.tags.map(x => {
+        const containerSlot = document.createElement('div')
+        containerSlot.style.setProperty('grid-column', x.col)
+        containerSlot.style.setProperty('grid-row', x.row)
+        containerSlot.classList.add('containerSlot')
+        containerSlot.setAttribute('id', x.row+'.'+x.col)
+        componentsView.append(containerSlot)
+    })
+    if (containers) {    
         containers.map(container => {
-            grid.nums.map(x => {
+            grid.tags.map(x => {
                 if (container.components.find(component => component.id === x.componentId) && container.containerTypes.find(containerType => containerType.id === x.containerTypeId)) {
                     const containerCard = ContainerCard(container.title)
                     containerCard.style.setProperty('grid-column', x.col)
