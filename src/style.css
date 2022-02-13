@@ -46,6 +46,24 @@ body {
     background-color: #3c3446;
     border-radius: 10px;
     padding: 0.5em;
+    z-index: 20;
+}
+
+.productItem {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    z-index: 60;
+}
+
+@media (hover: hover) {
+    .productItem:hover {
+        overflow: visible;
+        width: fit-content;
+        background-color: #3c3446;
+        padding-right: 1em;
+        border-radius: 0.5em;
+    }
 }
 
 .mainPanel {
@@ -55,8 +73,8 @@ body {
     background-color: #3c3446;
     border-radius: 10px;
     overflow: auto;
-    padding: 0.5em;
     border: 0.5em solid #3c3446;
+    z-index: 10;
 }
 
 .mainPanel::-webkit-scrollbar {
@@ -65,7 +83,7 @@ body {
 
 .componentsView {
     display: grid;
-    grid-template-columns: repeat(var(--componentListCols), 10em);
+    grid-template-columns: 10em repeat(var(--componentListCols), 10em) 10em;
     grid-template-rows: 2em repeat(var(--componentListRows), 10em) 2em;
     gap: 1% 0.5%;
     height: calc((var(--componentListRows)*10em) + (var(--componentListRows)-1)*1%);
@@ -76,7 +94,28 @@ body {
     position: sticky;
     top: 0;
     width: 10em;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+    background-color: #3c3446;
+}
+
+.containerTypeItem p {
+    overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+@media (hover: hover) {
+    .containerTypeItem p:hover {
+        overflow: visible;
+        width: fit-content;
+        background-color: #3c3446;
+        padding-right: 1em;
+        border-radius: 0.5em;
+    }
 }
 
 #addContainerType, #newContainerType {
@@ -84,32 +123,37 @@ body {
     top: 0;
 }
 
-.containerTypeItem:hover {
-    text-overflow: clip;
-}
-
-.containerTypeItem::-webkit-scrollbar {
-    display: none;
-}
-
 .componentTitle {
     position: sticky;
     left: 0;
     width: 5em;
+    display: flex;
+    align-items: flex-start;
+    z-index: 50;
+    background-color: #3c3446;
+}
+
+.componentTitle p {
+    overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+@media (hover: hover) {
+    .componentTitle p:hover {
+        overflow: visible;
+        width: fit-content;
+        background-color: #3c3446;
+        padding-right: 1em;
+        border-radius: 0.5em;
+    }
 }
 
 #addComponent, #newComponent {
     position: sticky;
     left: 0;
-}
-
-.componentTitle:hover {
-    text-overflow: clip;
-}
-
-.componentTitle::-webkit-scrollbar {
-    display: none;
 }
 
 .containerSlot {

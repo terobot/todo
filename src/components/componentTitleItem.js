@@ -1,6 +1,6 @@
 const ComponentTitleItem = (item) => {
     const itemEl = document.createElement('div')
-    itemEl.innerHTML = `${item}`
+    itemEl.innerHTML = `<p>${item}</p>`
     itemEl.classList.add('componentTitle')
     itemEl.setAttribute('id', item)
 

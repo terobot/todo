@@ -26,8 +26,8 @@ const ComponentsView = (productId) => {
     const cancelComponentButton = Button('Cancel', 'cancelComponent', 'button', 'initial')
     componentsView.classList.add('componentsView')
     componentsView.setAttribute('id', 'componentsView')
-    root.style.setProperty('--componentListRows', componentQty+2);
-    root.style.setProperty('--componentListCols', containerTypeQty+2);
+    root.style.setProperty('--componentListRows', componentQty);
+    root.style.setProperty('--componentListCols', containerTypeQty);
     if (containerTypes) {
         let count = 1
         grid.containerTypes = []

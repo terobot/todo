@@ -1,6 +1,6 @@
 const ContainerTypeItem = (item) => {
     const itemEl = document.createElement('div')
-    itemEl.innerHTML = `${item}`
+    itemEl.innerHTML = `<p>${item}</p>`
     itemEl.classList.add('containerTypeItem')
     itemEl.setAttribute('id', item)
     itemEl.addEventListener('dblclick', () => {
