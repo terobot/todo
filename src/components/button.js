@@ -4,6 +4,7 @@ const Button = (value, id, type, display) => {
     button.style.display = display
     button.setAttribute('type', type)
     button.setAttribute('id', id)
+    button.setAttribute('title', id)
     button.setAttribute('value', value)
     button.innerHTML = value
 

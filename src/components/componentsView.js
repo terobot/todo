@@ -1,5 +1,6 @@
 import Button from './button'
 import Form from './form'
+import EmptyBlock from './emptyBlock'
 import ContainerTypeItem from './containerTypeItem'
 import ComponentTitleItem from './componentTitleItem'
 import ContainerCard from './containerCard'
@@ -24,10 +25,14 @@ const ComponentsView = (productId) => {
     const newComponentForm = Form('newComponent', 'none', 'Component name')
     const submitComponentButton = Button('Submit', 'submitComponent', 'submit', 'initial')
     const cancelComponentButton = Button('Cancel', 'cancelComponent', 'button', 'initial')
+    const topLeftCorner = EmptyBlock('topLeftBlock')
     componentsView.classList.add('componentsView')
     componentsView.setAttribute('id', 'componentsView')
     root.style.setProperty('--componentListRows', componentQty);
     root.style.setProperty('--componentListCols', containerTypeQty);
+    topLeftCorner.style.setProperty('grid-column', 1)
+    topLeftCorner.style.setProperty('grid-row', 1)
+    componentsView.append(topLeftCorner)
     if (containerTypes) {
         let count = 1
         grid.containerTypes = []

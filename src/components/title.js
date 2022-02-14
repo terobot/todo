@@ -3,6 +3,7 @@ const Title = (text, id, elClass) => {
     title.classList.add(elClass)
     title.innerText = text
     title.setAttribute('id', id)
+    title.setAttribute('title', text)
     
     return title
 }

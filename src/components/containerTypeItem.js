@@ -3,6 +3,7 @@ const ContainerTypeItem = (item) => {
     itemEl.innerHTML = `<p>${item}</p>`
     itemEl.classList.add('containerTypeItem')
     itemEl.setAttribute('id', item)
+    itemEl.setAttribute('title', item)
     itemEl.addEventListener('dblclick', () => {
         const currentValue = itemEl.innerHTML
         itemEl.contentEditable = 'true'

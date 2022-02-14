@@ -38,6 +38,9 @@ body {
 
 .title#productList {
     font-size: 1.5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .sidePanel {
@@ -46,24 +49,13 @@ body {
     background-color: #3c3446;
     border-radius: 10px;
     padding: 0.5em;
-    z-index: 20;
+    z-index: 11;
 }
 
 .productItem {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    z-index: 60;
-}
-
-@media (hover: hover) {
-    .productItem:hover {
-        overflow: visible;
-        width: fit-content;
-        background-color: #3c3446;
-        padding-right: 1em;
-        border-radius: 0.5em;
-    }
 }
 
 .mainPanel {
@@ -74,7 +66,6 @@ body {
     border-radius: 10px;
     overflow: auto;
     border: 0.5em solid #3c3446;
-    z-index: 10;
 }
 
 .mainPanel::-webkit-scrollbar {
@@ -83,77 +74,82 @@ body {
 
 .componentsView {
     display: grid;
-    grid-template-columns: 10em repeat(var(--componentListCols), 10em) 10em;
-    grid-template-rows: 2em repeat(var(--componentListRows), 10em) 2em;
-    gap: 1% 0.5%;
-    height: calc((var(--componentListRows)*10em) + (var(--componentListRows)-1)*1%);
-    width: calc((var(--componentListCols)*10em) + (var(--componentListCols)-1)*0.5%);
+    grid-template-columns: 8em repeat(var(--componentListCols), 8em) 8em;
+    grid-template-rows: 2em repeat(var(--componentListRows), 8em) 2em;
+    height: calc((var(--componentListRows)*8em + (2*2em)));
+    width: calc((var(--componentListCols)*8em + (2*8em)));
+}
+
+.topLeftBlock {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 8em;
+    z-index: 12;
+    background-color: #1F1B24;
 }
 
 .containerTypeItem {
     position: sticky;
     top: 0;
-    width: 10em;
+    width: 8em;
     display: flex;
     align-items: center;
-    z-index: 100;
-    background-color: #3c3446;
+    justify-content: center;
+    z-index: 10;
+    background-color: #1F1B24;
+    opacity: 0.9;
 }
 
 .containerTypeItem p {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
 }
 
-@media (hover: hover) {
-    .containerTypeItem p:hover {
-        overflow: visible;
-        width: fit-content;
-        background-color: #3c3446;
-        padding-right: 1em;
-        border-radius: 0.5em;
-    }
+#addContainerType {
+    width: 4em;
+    height: 2em;
 }
 
 #addContainerType, #newContainerType {
     position: sticky;
     top: 0;
+    right: 0;
+    z-index: 11;
 }
 
 .componentTitle {
     position: sticky;
     left: 0;
-    width: 5em;
+    width: 8em;
     display: flex;
-    align-items: flex-start;
-    z-index: 50;
+    align-items: center;
+    z-index: 9;
     background-color: #3c3446;
+    opacity: 0.9;
 }
 
 .componentTitle p {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
 }
 
-@media (hover: hover) {
-    .componentTitle p:hover {
-        overflow: visible;
-        width: fit-content;
-        background-color: #3c3446;
-        padding-right: 1em;
-        border-radius: 0.5em;
-    }
+#addComponent {
+    width: 4em;
+    height: 2em;
 }
 
 #addComponent, #newComponent {
     position: sticky;
     left: 0;
+    bottom: 0;
+    z-index: 10;
+}
+
+#newComponent {
+    bottom: 10px;
 }
 
 .containerSlot {
@@ -162,6 +158,7 @@ body {
     background-color: #1F1B24;
     overflow: auto;
     border-radius: 0.5em;
+    border: 2px solid #3c3446;
 }
 
 .containerCard {
