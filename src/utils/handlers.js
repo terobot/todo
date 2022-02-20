@@ -1,8 +1,6 @@
 import Service from './services'
 import ProductItem from '../components/productItem'
 import ComponentsView from '../components/componentsView'
-import Button from '../components/button'
-import ContainerCard from '../components/containerCard'
 
 const openFormInPlace = (button, form) => {
     button.style.display = 'none'
@@ -36,16 +34,6 @@ const submitNewComponentForm = (e, productId) => {
     openProduct(productId)
 }
 
-const submitNewContainerTypeForm = (e, productId) => {
-    e.preventDefault()
-    const product = Service.getProductById(productId)
-    const newContainerType = Service.createContainerType(e.target.elements[0].value)
-    product.containerTypes.push(newContainerType)
-    product.containerTypeQty++
-    Service.updateProduct(productId, product)
-    openProduct(productId)
-}
-
 const openView = (view) => {
     const mainPanel = document.getElementById('mainPanel')
     mainPanel.innerHTML = ''
@@ -56,36 +44,11 @@ const openProduct = (productId) => {
     openView(ComponentsView(productId))
 }
 
-const fillGridWithAddContainerButtons = (grid, startRow, startCol, rows, cols) => {
-    let xCount = startRow
-    let yCount = startCol
-    rows.map(x => {
-        cols.map(y => {
-            const item = Button('+', 'addContainer' + xCount + '.' + yCount, 'button','initial')
-            item.style.setProperty('grid-column', yCount)
-            item.style.setProperty('grid-row', xCount)
-            item.addEventListener('click', (e) => {
-                const card = ContainerCard('container' + e.target.id.slice(12))
-                const nums = e.target.id.slice(12).split('.')
-                card.style.setProperty('grid-column', nums[1])
-                card.style.setProperty('grid-row', nums[0])
-                grid.append(card)
-            })
-            grid.append(item)
-            yCount++
-        })
-        yCount = startCol
-        xCount++
-    })
-}
-
 export default {
     openFormInPlace,
     cancelFormInPlace,
     submitNewProductForm,
     submitNewComponentForm,
-    submitNewContainerTypeForm,
     openView,
-    openProduct,
-    fillGridWithAddContainerButtons
+    openProduct
 }

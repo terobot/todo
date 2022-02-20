@@ -6,7 +6,7 @@ import Logo from './logo'
 
 const Header = () => {
     const header = document.createElement('header')
-    const logo = Logo(logoSrc, 'todo app', 'logo', 'logo')
+    const logo = Logo(logoSrc, 'todo', 'logo', 'logo')
     const title = Title('todo', 'title', 'title')
     title.addEventListener('click', () => Handler.openView(HomeView()))
     logo.addEventListener('click', () => Handler.openView(HomeView()))

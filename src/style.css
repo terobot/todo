@@ -1,8 +1,3 @@
-:root {
-    --componentListCols: 0;
-    --componentListRows: 0;
-}
-
 body {
     display: grid;
     grid-template-columns: repeat(6, 16%);
@@ -46,16 +41,40 @@ body {
 .sidePanel {
     grid-column: 1 / 2;
     grid-row: 2;
+    display: flex;
+    flex-direction: column;
     background-color: #3c3446;
     border-radius: 10px;
     padding: 0.5em;
     z-index: 11;
 }
 
+.list#productList {
+    max-height: 50vh;
+    overflow: auto;
+    scrollbar-width: thin;
+}
+
+.list#productList::-webkit-scrollbar {
+    display: block;
+    width: 4px;
+    background: #2b2531;
+}
+
+.list#productList::-webkit-scrollbar-thumb {
+    background: #757575;
+    border-radius: 1px;
+    opacity: .8;
+}
+
 .productItem {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.button#addProduct {
+    width: 2em;
 }
 
 .mainPanel {
@@ -66,57 +85,46 @@ body {
     border-radius: 10px;
     overflow: auto;
     border: 0.5em solid #3c3446;
+    scrollbar-width: thin;
 }
 
 .mainPanel::-webkit-scrollbar {
-    display: none;
+    display: block;
+    width: 4px;
+    height: 4px;
+    background:#2b2531;
+    border-radius: 1px;
+}
+
+.mainPanel::-webkit-scrollbar-thumb {
+    background: #757575;
+    border-radius: 1px;
+    opacity: .8;
+}
+
+.mainPanel::-webkit-scrollbar-corner {
+    background:#2b2531;
 }
 
 .componentsView {
-    display: grid;
-    grid-template-columns: 8em repeat(var(--componentListCols), 8em) 8em;
-    grid-template-rows: 2em repeat(var(--componentListRows), 8em) 2em;
-    height: calc((var(--componentListRows)*8em + (2*2em)));
-    width: calc((var(--componentListCols)*8em + (2*8em)));
-}
-
-.topLeftBlock {
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 8em;
-    z-index: 12;
-    background-color: #1F1B24;
-}
-
-.containerTypeItem {
-    position: sticky;
-    top: 0;
-    width: 8em;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    background-color: #1F1B24;
-    opacity: 0.9;
+    flex-direction: column;
 }
 
-.containerTypeItem p {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+.componentItem {
+    display: flex;
+    flex-direction: row;
 }
 
-#addContainerType {
-    width: 4em;
-    height: 2em;
-}
-
-#addContainerType, #newContainerType {
+.button#addComponent, form#newComponent {
     position: sticky;
-    top: 0;
-    right: 0;
-    z-index: 11;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+}
+
+.button#addComponent {
+    width: 2em;
 }
 
 .componentTitle {
@@ -136,36 +144,25 @@ body {
     white-space: nowrap;
 }
 
-#addComponent {
-    width: 4em;
-    height: 2em;
-}
-
-#addComponent, #newComponent {
-    position: sticky;
-    left: 0;
-    bottom: 0;
-    z-index: 10;
-}
-
-#newComponent {
-    bottom: 10px;
-}
-
-.containerSlot {
+.containerCard {
     display: flex;
     flex-direction: column;
+    width: 6em;
+    height: 8em;
     background-color: #1F1B24;
-    overflow: auto;
     border-radius: 0.5em;
     border: 2px solid #3c3446;
+    cursor: pointer;
 }
 
-.containerCard {
-    background: #494055;
-    height: 2em;
-    line-height: 1em;
-    border-radius: 0.5em;
-    cursor:pointer;
-    margin: 0.5em;
+.containerCard div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.button#addContainer, form#newContainer {
+    position: sticky;
+    right: 0;
+    z-index: 8;
 }
