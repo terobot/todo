@@ -77,10 +77,16 @@ body {
     width: 2em;
 }
 
+form#newProduct {
+    overflow: visible;
+    white-space: nowrap;
+}
+
 .mainPanel {
     grid-column: 2 / 7;
     grid-row: 2;
     display: flex;
+    flex-direction: column;
     background-color: #3c3446;
     border-radius: 10px;
     overflow: auto;
@@ -127,18 +133,27 @@ body {
     width: 2em;
 }
 
-.componentTitle {
+#titleAndButton {
     position: sticky;
     left: 0;
-    width: 8em;
+    width: 10em;
     display: flex;
     align-items: center;
     z-index: 9;
+}
+
+.componentTitle {
+    width: 8em;
+    height: 8em;
+    border: 2px solid #3c3446;
+    display: flex;
+    align-items: center;
     background-color: #3c3446;
-    opacity: 0.9;
+    opacity: 0.95;
 }
 
 .componentTitle p {
+    width: 8em;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -147,7 +162,7 @@ body {
 .containerCard {
     display: flex;
     flex-direction: column;
-    width: 6em;
+    min-width: 6em;
     height: 8em;
     background-color: #1F1B24;
     border-radius: 0.5em;
@@ -162,7 +177,25 @@ body {
 }
 
 .button#addContainer, form#newContainer {
-    position: sticky;
-    right: 0;
     z-index: 8;
+    overflow: visible;
+    white-space: nowrap;
+}
+
+.button#addContainer {
+    width: 2em;
+}
+
+.containerView {
+    display: flex;
+    position: sticky;
+    left: 0;
+    top: 0;
+    z-index: 11;
+    width: 99%;
+    min-height: 60%;
+    max-height: 60%;
+    border-radius: 0.5em;
+    border: 2px solid #3c3446;
+    background-color: #000000;
 }

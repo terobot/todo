@@ -69,6 +69,10 @@ const getComponents = () => {
     return JSON.parse(localStorage.getItem('components')) || []
 }
 
+const getComponentById = (id) => {
+    return getComponents().find(x => x.id === id)
+}
+
 const createComponent = (componentTitle) => {
     const components = getComponents()
     const componentId = uuidv4()
@@ -77,6 +81,18 @@ const createComponent = (componentTitle) => {
     localStorage.setItem('components', JSON.stringify(components))
 
     return newComponent
+}
+
+const updateComponent = (componentId, updatedComponent) => {
+    const components = getComponents()
+    const products = getProducts()
+    const updatedComponents = components.map(x => x.id === componentId ? x = updatedComponent : x)
+    products.map(product => {
+        const index = product.components.findIndex(component => component.id === componentId)
+        if (index !== -1) product.components[index] = updatedComponent
+    })
+    localStorage.setItem('products', JSON.stringify(products))
+    localStorage.setItem('components', JSON.stringify(updatedComponents))
 }
 
 const getContainers = () => {
@@ -99,7 +115,9 @@ export default {
     createProduct,
     updateProduct,
     getComponents,
+    getComponentById,
     createComponent,
+    updateComponent,
     getContainers,
     createContainer
 }

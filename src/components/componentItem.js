@@ -11,19 +11,22 @@ const ComponentItem = (component) => {
     const newContainerForm = Form('newContainer', 'none', 'Container name')
     const submitContainerButton = Button('Submit', 'submitContainer', 'submit', 'initial')
     const cancelContainerButton = Button('Cancel', 'cancelContainer', 'button', 'initial')
+    const titleAndButtonEl = document.createElement('div')
     componentEl.classList.add('componentItem')
     componentEl.setAttribute('id', component.title)
-    componentEl.append(ComponentTitleItem(component.title))
+    titleAndButtonEl.setAttribute('id', 'titleAndButton')
+    titleAndButtonEl.append(ComponentTitleItem(component.title))
+    cancelContainerButton.addEventListener('click', () => Handler.cancelFormInPlace(addContainerButton, newContainerForm))
+    newContainerForm.append(submitContainerButton, cancelContainerButton)
+    newContainerForm.addEventListener('submit', (e) => Handler.submitNewContainerForm(e, component.id, componentEl))
+    addContainerButton.addEventListener('click', () => Handler.openFormInPlace(addContainerButton, newContainerForm))
+    titleAndButtonEl.append(addContainerButton, newContainerForm)
+    componentEl.append(titleAndButtonEl)
     if (containers) {
         containers.map(container => {
             componentEl.append(ContainerCard(container))
         })
     }
-    cancelContainerButton.addEventListener('click', () => Handler.cancelFormInPlace(addContainerButton, newContainerForm))
-    newContainerForm.append(submitContainerButton, cancelContainerButton)
-    newContainerForm.addEventListener('submit', (e) => console.log('todo: add a new container'))
-    addContainerButton.addEventListener('click', () => Handler.openFormInPlace(addContainerButton, newContainerForm))
-    componentEl.append(addContainerButton, newContainerForm)
 
     return componentEl
 }
