@@ -163,17 +163,22 @@ form#newProduct {
     display: flex;
     flex-direction: column;
     min-width: 6em;
+    width: 6em;
     height: 8em;
     background-color: #1F1B24;
     border-radius: 0.5em;
     border: 2px solid #3c3446;
     cursor: pointer;
+    align-items: center;
+    justify-content: center;
 }
 
 .containerCard div {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    width: inherit;
+    text-align: center;
 }
 
 .button#addContainer, form#newContainer {

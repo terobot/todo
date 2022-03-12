@@ -14,7 +14,7 @@ const ContainerCard = (container) => {
     heroImage.setAttribute('id', 'heroImage' + container.title)
     heroImage.setAttribute('title', 'heroImage' + container.title)
     heroImage.classList.add('heroImage')
-    card.append(title, heroImage)
+    card.append(heroImage, title)
     card.addEventListener('click', () => Handler.openContainer(container))
 
     return card

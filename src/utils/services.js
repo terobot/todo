@@ -1,17 +1,18 @@
 import Schema from './schema'
 import { v4 as uuidv4 } from 'uuid'
+import heroImage from '../assets/botAvatar.svg'
 
 //init product for dev purposes
 const products = []
 const components = []
 const containers = []
 const l1containers = [
-    Schema.Component({title:'Story', id: uuidv4()}),
-    Schema.Component({title:'Characters', id: uuidv4()}),
-    Schema.Component({title:'Enemies', id: uuidv4()}),
-    Schema.Component({title:'Objects', id: uuidv4()}),
-    Schema.Component({title:'Environment', id: uuidv4()}),
-    Schema.Component({title:'Mechanics', id: uuidv4()})
+    Schema.Container({title:'Story', id: uuidv4()}),
+    Schema.Container({title:'Characters', id: uuidv4(), hero: heroImage}),
+    Schema.Container({title:'Enemies', id: uuidv4()}),
+    Schema.Container({title:'Objects', id: uuidv4()}),
+    Schema.Container({title:'Environment', id: uuidv4()}),
+    Schema.Container({title:'Mechanics', id: uuidv4()})
 ]
 const gameComponents = [
     Schema.Component({title:'Level1', id: uuidv4(), containers: l1containers}),

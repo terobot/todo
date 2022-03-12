@@ -18,6 +18,7 @@ const Container = (props) => {
     const title = props.title
     const id = props.id
     const hero = props.hero
+    const work = props.work
     const state = props.state
     const output = props.output
 
