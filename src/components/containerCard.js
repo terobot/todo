@@ -9,6 +9,7 @@ const ContainerCard = (container) => {
     card.setAttribute('id', container.title)
     card.setAttribute('title', container.title)
     title.innerHTML = `${container.title}`
+    console.log(container.hero)
     heroImage.setAttribute('src', container.hero || defaultHeroImage)
     heroImage.setAttribute('alt', 'heroImage' + container.title)
     heroImage.setAttribute('id', 'heroImage' + container.title)

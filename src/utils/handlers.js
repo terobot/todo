@@ -57,12 +57,9 @@ const openProduct = (productId) => {
 
 const openContainer = (container) => {
     const containerView = document.getElementsByClassName('containerView')[0]
-    //const componentsView = document.getElementById('componentsView')
     const mainPanel = document.getElementById('mainPanel')
     if (containerView) containerView.remove()
     mainPanel.prepend(ContainerView(container))
-    //componentsView.prepend(ContainerView(container))
-    //openView(ContainerView(container))
 }
 
 export default {
