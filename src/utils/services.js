@@ -110,6 +110,30 @@ const createContainer = (containerTitle) => {
     return newContainer
 }
 
+const updateContainer = (container) => {
+    const containers = getContainers()
+    const components = getComponents()
+    const products = getProducts()
+    let componentId = undefined
+    let componentItem = undefined
+    containers.map(x => x.id === container.id ? x = container : x)
+    localStorage.setItem('containers', JSON.stringify(containers))
+    components.map(component => {
+        const index = component.containers.findIndex(x => x.id === container.id)
+        if (index !== -1) {
+            component.containers[index] = container
+            componentId = component.id
+            componentItem = component
+        }
+    })
+    localStorage.setItem('components', JSON.stringify(components))
+    products.map(product => {
+        const index = product.components.findIndex(x => x.id === componentId)
+        if (index !== -1) product.components[index] = componentItem
+    })
+    localStorage.setItem('products', JSON.stringify(products))
+}
+
 export default {
     getProducts,
     getProductById,
@@ -120,5 +144,6 @@ export default {
     createComponent,
     updateComponent,
     getContainers,
-    createContainer
+    createContainer,
+    updateContainer
 }

@@ -62,6 +62,17 @@ const openContainer = (container) => {
     mainPanel.prepend(ContainerView(container))
 }
 
+const updateContainerHeroImage = (container) => {
+    const cardImage = document.getElementById('heroImage' + container.title)
+    const previewImage = document.getElementById('heroImagePreview' + container.title)
+    const newImage = document.getElementById('chooseHeroImage').files[0]
+    const newImageSrc = URL.createObjectURL(newImage)
+    cardImage.setAttribute('src', newImageSrc)
+    previewImage.setAttribute('src', newImageSrc)
+    container.hero = cardImage.src
+    Service.updateContainer(container)
+}
+
 export default {
     openFormInPlace,
     cancelFormInPlace,
@@ -70,5 +81,6 @@ export default {
     submitNewContainerForm,
     openView,
     openProduct,
-    openContainer
+    openContainer,
+    updateContainerHeroImage
 }

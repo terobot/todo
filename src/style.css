@@ -204,3 +204,8 @@ form#newProduct {
     border: 2px solid #3c3446;
     background-color: #000000;
 }
+
+.heroImage, .heroImagePreview {
+    width: 4em;
+    height: 4em;
+}
