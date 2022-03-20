@@ -209,3 +209,31 @@ form#newProduct {
     width: 4em;
     height: 4em;
 }
+
+.containerDetails {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    gap: 0.5em;
+    width: 14em;
+    overflow: auto;
+    scrollbar-width: thin;
+}
+
+.containerDetails::-webkit-scrollbar {
+    display: block;
+    width: 4px;
+    height: 4px;
+    background:#2b2531;
+    border-radius: 1px;
+}
+
+.containerDetails::-webkit-scrollbar-thumb {
+    background: #757575;
+    border-radius: 1px;
+    opacity: .8;
+}
+
+.containerDetails::-webkit-scrollbar-corner {
+    background:#2b2531;
+}

@@ -18,11 +18,12 @@ const Container = (props) => {
     const title = props.title
     const id = props.id
     const hero = props.hero
+    const description = props.description
     const work = props.work
     const state = props.state
     const output = props.output
 
-    return {title, id, hero, work, state, output}
+    return {title, id, hero, description, work, state, output}
 }
 
 export default {Product, Component, Container}

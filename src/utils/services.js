@@ -8,7 +8,7 @@ const components = []
 const containers = []
 const l1containers = [
     Schema.Container({title:'Story', id: uuidv4()}),
-    Schema.Container({title:'Characters', id: uuidv4(), hero: heroImage}),
+    Schema.Container({title:'Characters', id: uuidv4(), hero: heroImage, description: 'Character work container'}),
     Schema.Container({title:'Enemies', id: uuidv4()}),
     Schema.Container({title:'Objects', id: uuidv4()}),
     Schema.Container({title:'Environment', id: uuidv4()}),
