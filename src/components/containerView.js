@@ -1,12 +1,13 @@
 import Input from "./input"
 import Image from "./image"
+import WorkView from "./workView"
 import defaultHeroImage from '../assets/image-add-line.png'
 import Handler from "../utils/handlers"
 
 const ContainerView = (container) => {
     const containerView = document.createElement('div')
     const details = document.createElement('div')
-    const workContainer = document.createElement('div')
+    const workView = WorkView(container.work)
     const title = document.createElement('div')
     const heroImage = Image(container.hero || defaultHeroImage, 'heroImagePreview' + container.title, 'heroImagePreview' + container.title, 'heroImagePreview')
     const uploadHeroImage = Input('chooseHeroImage', 'file', 'initial')
@@ -43,7 +44,7 @@ const ContainerView = (container) => {
         })
     })
     details.append(title, heroImage, uploadHeroImage, description)
-    containerView.append(details, workContainer)
+    containerView.append(details, workView)
 
     return containerView
 }

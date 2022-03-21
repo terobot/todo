@@ -19,11 +19,20 @@ const Container = (props) => {
     const id = props.id
     const hero = props.hero
     const description = props.description
-    const work = props.work
-    const state = props.state
-    const output = props.output
+    const work = props.work || []
+    const workItemQty = work.length || 0
+    const doneWorkItemQty = work.map(x => x.state === 'done').length || 0
 
-    return {title, id, hero, description, work, state, output}
+    return {title, id, hero, description, work, workItemQty, doneWorkItemQty}
 }
 
-export default {Product, Component, Container}
+const WorkItem = (props) => {
+    const title = props.title
+    const id = props.id
+    const state = props.state
+    const outpus = props.output
+
+    return {title, id, state, output}
+}
+
+export default {Product, Component, Container, WorkItem}
