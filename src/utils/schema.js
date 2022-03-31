@@ -30,7 +30,7 @@ const WorkItem = (props) => {
     const title = props.title
     const id = props.id
     const state = props.state
-    const outpus = props.output
+    const output = props.output
 
     return {title, id, state, output}
 }

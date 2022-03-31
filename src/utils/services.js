@@ -134,6 +134,20 @@ const updateContainer = (container) => {
     localStorage.setItem('products', JSON.stringify(products))
 }
 
+const getWorkItems = () => {
+    return JSON.parse(localStorage.getItem('workItems')) || []
+}
+
+const createWorkItem = (workItemTitle) => {
+    const workItems = getWorkItems()
+    const workItemId = uuidv4()
+    const newWorkItem = Schema.WorkItem({title: workItemTitle, id: workItemId})
+    workItems.push(newWorkItem)
+    localStorage.setItem('workItems', JSON.stringify(workItems))
+
+    return newWorkItem
+}
+
 export default {
     getProducts,
     getProductById,
@@ -145,5 +159,7 @@ export default {
     updateComponent,
     getContainers,
     createContainer,
-    updateContainer
+    updateContainer,
+    getWorkItems,
+    createWorkItem
 }
